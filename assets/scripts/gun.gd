@@ -1,3 +1,7 @@
+# Every equippable thing in the game inherits from this class. Depending on the item type located in the equipped item's
+# attached Item class, the player will either be able to shoot, or not. Soon, I'll add consumables as well (medkits, pills..)
+# There are things to improve here. There's a bit of deprecated code left around, too. I'll come back to comment everything
+# thoroughly soon.
 extends Node3D
 
 @onready var audioplayer = $audioplayer
@@ -26,6 +30,7 @@ var isrunning: bool = false
 var isaiming: bool = false
 var reserveammo: int
 var ammochecktimer = 0.0
+
 enum STATE {
 	IDLE,
 	RELOADING,

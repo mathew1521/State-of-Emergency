@@ -1,3 +1,5 @@
+# This is a console script. Is this the best way to do something like this? No. Of course not. But it's good for testing
+# things on the fly.
 extends Node
 class_name Console
 var isopen: bool = false

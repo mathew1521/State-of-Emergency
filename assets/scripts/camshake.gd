@@ -1,3 +1,6 @@
+# This script adds camera shake. I found it somewhere, not sure where though, and I still use it.
+# It is less than ideal for things like gun recoil, etc. This will eventually be deprecated once I
+# get around to making a hand-made script.
 extends Node3D
 class_name CameraShake
 

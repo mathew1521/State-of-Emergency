@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://brk8i0ovtr802"]
+[gd_scene load_steps=51 format=3 uid="uid://47n0u3xb6rwl"]
 
 [ext_resource type="Script" path="res://assets/scripts/interactable.gd" id="1_pjdgt"]
 [ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/items/pistol/pistol.tres" id="2_o1pku"]

@@ -1,3 +1,5 @@
+# I like to use composition, because Godot is all about composition. If put inside of a node, it just
+# provides health functionality.
 extends Node
 
 @export var health: int

@@ -1,3 +1,5 @@
+# This is the item class. I think this is pretty self explanatory. Oh yeah, every item must have
+# a scene attached.
 extends Resource
 class_name Item
 

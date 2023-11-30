@@ -16,6 +16,10 @@ run/main_scene="res://assets/scenes/menus/menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/show_image=false
 
+[autoload]
+
+Main="*res://assets/scripts/main.gd"
+
 [display]
 
 window/size/viewport_width=1000

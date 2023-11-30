@@ -371,7 +371,7 @@ mesh = SubResource("ArrayMesh_upl4r")
 skin = SubResource("Skin_n12q5")
 
 [node name="head" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(1, -2.38032e-13, 2.38418e-07, 5.70786e-08, 0.97092, -0.239404, -2.31485e-07, 0.239404, 0.97092, 0, 2.04366, -0.268063)
+transform = Transform3D(1, -2.16716e-13, 2.38419e-07, 5.70786e-08, 0.97092, -0.239404, -2.31486e-07, 0.239404, 0.97092, 0, 2.04366, -0.268063)
 bone_name = "Head"
 bone_idx = 3
 
@@ -382,7 +382,7 @@ transform = Transform3D(1, 5.06857e-08, 1.61216e-08, -5.31514e-08, 0.941093, 0.3
 shape = SubResource("SphereShape3D_ttruc")
 
 [node name="torso" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(1, 0, 0, 0, 0.998326, 0.0578344, 0, -0.0578344, 0.998326, 0, 0.178492, -0.116549)
+transform = Transform3D(1, 0, 0, 0, 0.998326, 0.0578345, 0, -0.0578345, 0.998326, 0, 0.178492, -0.116549)
 bone_name = "Torso"
 bone_idx = 1
 
@@ -393,7 +393,7 @@ transform = Transform3D(1, -8.88178e-16, 3.12639e-13, 2.22045e-14, 1, 0, 2.06057
 shape = SubResource("CapsuleShape3D_mmevu")
 
 [node name="larm" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(-0.767419, 0.6365, 0.077041, -0.641146, -0.761858, -0.092213, 6.81728e-07, -0.120161, 0.992755, 0.592665, 1.41639, -0.177255)
+transform = Transform3D(-0.767419, 0.636501, 0.0770411, -0.641146, -0.761859, -0.092213, 8.15839e-07, -0.120161, 0.992754, 0.592665, 1.41639, -0.177255)
 bone_name = "Arm_L"
 bone_idx = 4
 
@@ -404,7 +404,7 @@ transform = Transform3D(0.999929, 0.0108978, 0.00513279, -0.00923124, 0.966953, 
 shape = SubResource("CapsuleShape3D_2x6lb")
 
 [node name="rarm" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(-0.767419, -0.6365, -0.077041, 0.641146, -0.761858, -0.092213, -6.81728e-07, -0.120161, 0.992755, -0.592665, 1.41639, -0.177255)
+transform = Transform3D(-0.767419, -0.636501, -0.0770411, 0.641146, -0.761859, -0.092213, -8.15839e-07, -0.120161, 0.992754, -0.592665, 1.41639, -0.177255)
 bone_name = "Arm_R"
 bone_idx = 6
 
@@ -415,7 +415,7 @@ transform = Transform3D(0.999929, 0.0108978, 0.00513279, -0.00923124, 0.966953, 
 shape = SubResource("CapsuleShape3D_2x6lb")
 
 [node name="lthigh" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(-0.998947, 0.0452609, -0.00759614, -0.0458939, -0.985106, 0.165714, 1.73668e-05, 0.165887, 0.986148, 0.306155, -0.150504, -0.200162)
+transform = Transform3D(-0.998946, 0.0452609, -0.00759611, -0.0458939, -0.985106, 0.165714, 1.73862e-05, 0.165888, 0.986145, 0.306155, -0.150504, -0.200162)
 bone_name = "Thigh_L"
 bone_idx = 8
 
@@ -426,7 +426,7 @@ transform = Transform3D(0.992547, 0.00102069, -0.121852, -0.0260621, 0.978607, -
 shape = SubResource("CapsuleShape3D_3eeuu")
 
 [node name="rthigh" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(-0.998947, -0.0452609, 0.00759614, 0.0458939, -0.985106, 0.165714, -1.73668e-05, 0.165887, 0.986148, -0.306155, -0.150504, -0.200162)
+transform = Transform3D(-0.998946, -0.0452609, 0.00759611, 0.0458939, -0.985106, 0.165714, -1.73862e-05, 0.165888, 0.986145, -0.306155, -0.150504, -0.200162)
 bone_name = "Thigh_R"
 bone_idx = 10
 
@@ -437,7 +437,7 @@ transform = Transform3D(0.992547, 0.00102069, -0.121852, -0.0260621, 0.978607, -
 shape = SubResource("CapsuleShape3D_3eeuu")
 
 [node name="rcalf" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(0.00467362, -0.0679893, -0.997675, 0.0569746, -0.996048, 0.0681452, -0.998368, -0.0571618, -0.000781417, -0.364176, -1.41333, 0.012492)
+transform = Transform3D(0.00467461, -0.0679892, -0.997675, 0.0569748, -0.996047, 0.0681453, -0.998365, -0.0571608, -0.000782427, -0.364176, -1.41333, 0.0124922)
 bone_name = "Calf_R"
 bone_idx = 11
 
@@ -448,7 +448,7 @@ transform = Transform3D(0.990886, -1.58809e-05, -0.134693, 0.0027242, 0.999799, 
 shape = SubResource("CapsuleShape3D_bsh5m")
 
 [node name="lcalf" type="BoneAttachment3D" parent="armature/skeleton"]
-transform = Transform3D(0.00467362, 0.0679893, 0.997675, -0.0569746, -0.996048, 0.0681452, 0.998368, -0.0571618, -0.000781417, 0.364176, -1.41333, 0.012492)
+transform = Transform3D(0.00467461, 0.0679892, 0.997675, -0.0569748, -0.996047, 0.0681453, 0.998365, -0.0571608, -0.000782427, 0.364176, -1.41333, 0.0124922)
 bone_name = "Calf_L"
 bone_idx = 9
 
