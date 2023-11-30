@@ -1,0 +1,352 @@
+[gd_scene load_steps=20 format=3 uid="uid://detatnigmyjex"]
+
+[ext_resource type="Texture2D" uid="uid://d3d5yfn4gxej0" path="res://assets/textures/placeholderfloor.png" id="1_363gv"]
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="2_j05j6"]
+[ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/USP.png" id="3_fb306"]
+[ext_resource type="Script" path="res://assets/scripts/vmshader.gd" id="3_p5wql"]
+[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/USP.obj" id="4_s8dij"]
+[ext_resource type="Texture2D" uid="uid://iktfsw8pcf7m" path="res://assets/textures/R870.png" id="5_ceo4q"]
+[ext_resource type="ArrayMesh" uid="uid://b8e085tqe0sa0" path="res://assets/models/R870.obj" id="6_lufqt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ghqo"]
+albedo_texture = ExtResource("1_363gv")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4njfp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5d830"]
+sky_material = SubResource("ProceduralSkyMaterial_4njfp")
+
+[sub_resource type="Environment" id="Environment_lyi22"]
+background_mode = 2
+sky = SubResource("Sky_5d830")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_density = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ui8lw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3gms1"]
+height = 1.4
+
+[sub_resource type="Animation" id="Animation_icq2u"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("usp:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("usp:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("usp:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("usp:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.91038e-11, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("usp:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.95943e-20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("usp:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(6.73253e-10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_425hg"]
+resource_name = "usp idle"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("usp:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.063299, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("usp:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.44978, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("usp:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("usp:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.0424479, -0.25, 0, 0.25, 0, 0.324824, -0.25, 0, 0.25, 0, 2.91038e-11, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("usp:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.48991, -0.25, 0, 0.25, 0, 0.103133, -0.25, 0, 0.25, 0, 1.95943e-20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.8)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("usp:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.42511, -0.25, 0, 0.25, 0, 0.0378485, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("usp:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("usp:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("usp:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpuhn"]
+_data = {
+"RESET": SubResource("Animation_icq2u"),
+"usp idle": SubResource("Animation_425hg")
+}
+
+[sub_resource type="Shader" id="Shader_g857e"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2yq4"]
+render_priority = 0
+shader = SubResource("Shader_g857e")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("3_fb306")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghjce"]
+albedo_texture = ExtResource("5_ceo4q")
+texture_filter = 0
+
+[node name="world" type="Node3D"]
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_2ghqo")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1.41742, 0)
+material_override = SubResource("StandardMaterial3D_2ghqo")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+environment = SubResource("Environment_lyi22")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_j05j6")
+
+[node name="standcollider" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_ui8lw")
+
+[node name="duckcollider" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_3gms1")
+disabled = true
+
+[node name="head" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="eyes" type="Node3D" parent="player/head"]
+
+[node name="maincam" type="Camera3D" parent="player/head/eyes"]
+fov = 80.0
+
+[node name="cameracolraycast" type="RayCast3D" parent="player/head/eyes/maincam"]
+target_position = Vector3(0, 0, -1000)
+
+[node name="equipped" type="Node3D" parent="player/head/eyes/maincam"]
+script = ExtResource("3_p5wql")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player/head/eyes/maincam/equipped"]
+libraries = {
+"": SubResource("AnimationLibrary_vpuhn")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player/head/eyes/maincam/equipped"]
+
+[node name="usp" type="Node3D" parent="player/head/eyes/maincam/equipped"]
+transform = Transform3D(1, -6.73253e-10, 1.95943e-20, 6.73253e-10, 1, -2.91038e-11, -7.91638e-26, 2.91038e-11, 1, 0, 0, 0)
+
+[node name="model" type="MeshInstance3D" parent="player/head/eyes/maincam/equipped/usp"]
+transform = Transform3D(-0.0998896, -0.00436127, -0.00174525, -0.00436194, 0.0999048, 0, 0.00174358, 7.61266e-05, -0.0999848, 0.3, -0.6, -1.125)
+layers = 1048575
+material_override = SubResource("ShaderMaterial_m2yq4")
+mesh = ExtResource("4_s8dij")
+skeleton = NodePath("../../../../../../..")
+
+[node name="r870" type="Node3D" parent="player/head/eyes/maincam/equipped"]
+visible = false
+
+[node name="R870" type="MeshInstance3D" parent="player/head/eyes/maincam/equipped/r870"]
+transform = Transform3D(0.499505, 0.0218097, -0.00435911, -0.0218089, 0.499524, 0.000190323, 0.00436327, -1.45519e-11, 0.499981, 0, 0, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_ghjce")
+mesh = ExtResource("6_lufqt")
+skeleton = NodePath("../../../../../../..")
+
+[node name="groundcolraycast" type="RayCast3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 2, 0)

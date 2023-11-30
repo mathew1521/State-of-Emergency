@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Map" load_steps=3 format=3 uid="uid://bpb6xlnbxicur"]
+
+[ext_resource type="PackedScene" uid="uid://detatnigmyjex" path="res://assets/maps/streets/streets.tscn" id="1_lmc3w"]
+[ext_resource type="Script" path="res://assets/scripts/map.gd" id="1_vny1k"]
+
+[resource]
+script = ExtResource("1_vny1k")
+map_name = "Small Town"
+description = "It all started with just a couple of isolated cases. Simple coughing, a sore throat, minor fever, slight irritation - by all means not severe symptoms for those afflicted. Then they all died overnight, only to get up again, and sink their teeth into whoever happened to cross paths with them. It didn't take very long for the local hospital to be overrun. The police made a valiant effort to contain the outbreak, but as the undead began to outnumber the living, they were all but decimated. A handful of survivors in the area cling to life. Hope, and supplies, are dwindling. There's got to be someone out there that can help..."
+type = 0
+map_scene = ExtResource("1_lmc3w")

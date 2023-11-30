@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxbar47b1ehnb"]
+
+[ext_resource type="Texture2D" uid="uid://d1q5oc6oacm6p" path="res://assets/menubg.png" id="1_0tcmi"]
+[ext_resource type="Script" path="res://assets/scripts/menu/menubuttons.gd" id="2_cs7lc"]
+[ext_resource type="AudioStream" uid="uid://cwbuuuj3w3hwc" path="res://assets/sounds/music/callofthevoid.wav" id="3_f4xqo"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0tcmi")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -91.5
+offset_right = 74.5
+offset_bottom = -65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "State of Emergency"
+
+[node name="buttons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -47.5
+offset_right = 150.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+script = ExtResource("2_cs7lc")
+
+[node name="continue" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Continue"
+
+[node name="start" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Start"
+
+[node name="exit" type="Button" parent="buttons"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f4xqo")
+autoplay = true
+
+[connection signal="pressed" from="buttons/continue" to="buttons" method="_on_continue_pressed"]
+[connection signal="pressed" from="buttons/start" to="buttons" method="_on_start_pressed"]
+[connection signal="pressed" from="buttons/exit" to="buttons" method="_on_exit_pressed"]

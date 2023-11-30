@@ -1,0 +1,490 @@
+[gd_scene load_steps=20 format=3 uid="uid://d4g6g7twjobba"]
+
+[ext_resource type="Script" path="res://assets/scripts/gun.gd" id="1_88scr"]
+[ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/items/usp.png" id="2_2hyy4"]
+[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/USP.obj" id="3_thuow"]
+[ext_resource type="Texture2D" uid="uid://b20xb0f2pshwy" path="res://assets/textures/muzzleflash.png" id="4_18gt1"]
+[ext_resource type="ArrayMesh" uid="uid://dd6ju4uco2g6" path="res://assets/models/MuzzleFlash.obj" id="5_11oet"]
+
+[sub_resource type="Shader" id="Shader_c22db"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform float fov : hint_range(20, 120) = 40;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	float scale = 1.0 / tan(fov * 0.5 * PI / 180.0); 
+    PROJECTION_MATRIX[0][0] = (1.0 / tan(fov * 0.5 * PI / 100.0)) / (VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	DEPTH = FRAGCOORD.z * 0.7;
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ygte"]
+render_priority = 0
+shader = SubResource("Shader_c22db")
+shader_parameter/fov = 42.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.7
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("2_2hyy4")
+
+[sub_resource type="Shader" id="Shader_2rjtx"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.2.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
+uniform float fov : hint_range(20, 120) = 40;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_emission : source_color, hint_default_black,filter_linear_mipmap,repeat_enable;
+uniform vec4 emission : source_color;
+uniform float emission_energy;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	float scale = 1.0 / tan(fov * 0.5 * PI / 180.0); 
+    PROJECTION_MATRIX[0][0] = (1.0 / tan(fov * 0.5 * PI / 100.0)) / (VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	DEPTH = FRAGCOORD.z * 0.7;
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
+	EMISSION = (emission.rgb+emission_tex)*emission_energy;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqew7"]
+render_priority = 0
+shader = SubResource("Shader_2rjtx")
+shader_parameter/fov = 42.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_18gt1")
+shader_parameter/texture_emission = ExtResource("4_18gt1")
+
+[sub_resource type="Animation" id="Animation_fdfl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -1.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.0698132)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("model/muzzleflash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("model/muzzleflash:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_yycbo"]
+resource_name = "ammocheck"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -1.125), Vector3(0.289949, -0.389369, -1.07187), Vector3(0.226983, -0.556724, -0.767654), Vector3(0.226983, -0.556724, -0.767654), Vector3(0.257, -0.595, -1.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.77203e-14, -3.14159, -0.0698132), Vector3(-0.410308, -2.80719, 0.62842), Vector3(0.0352249, -2.54784, 0.828312), Vector3(0.0352249, -2.54784, 0.828312), Vector3(1.77203e-14, -3.14159, -0.0698132)]
+}
+
+[sub_resource type="Animation" id="Animation_c5xc3"]
+resource_name = "equip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.207325, -1.98964, -0.125), Vector3(0.297837, -0.990223, -1.31576), Vector3(0.338327, -0.849432, -1.11121), Vector3(0.158795, -0.938539, -1.31576), Vector3(0.257, -0.595, -1.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.575212, -2.51138, 0.144032), Vector3(0.609308, -2.46807, -0.335443), Vector3(0.153025, -2.46574, -0.4157), Vector3(0.287606, -2.74756, 0.0371095), Vector3(0, -3.14159, -0.0698132)]
+}
+
+[sub_resource type="Animation" id="Animation_m3l61"]
+resource_name = "idling"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -1.125), Vector3(0.257, -0.598, -1.125), Vector3(0.257, -0.595, -1.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.0698132), Vector3(0, -3.14159, -0.0645772), Vector3(0, -3.14159, -0.0698132)]
+}
+
+[sub_resource type="Animation" id="Animation_ueuri"]
+resource_name = "reload"
+length = 2.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.9, 1.4, 1.6, 1.8, 2.1, 2.15, 2.25, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1.14105, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -1.125), Vector3(0.320484, -0.488595, -1.03281), Vector3(0.320484, -0.508243, -1.03281), Vector3(0.320484, -0.488595, -1.03281), Vector3(0.193299, -0.708034, -0.766116), Vector3(0.193299, -0.697928, -0.724851), Vector3(0.282794, -0.83906, -0.735474), Vector3(0.354968, -0.442548, -1.10533), Vector3(0.298857, -0.342973, -1.10533), Vector3(0.352473, -0.194281, -1.10533), Vector3(0.287119, -0.306652, -1.11085), Vector3(0.257, -0.595, -1.125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.9, 1.4, 1.6, 1.8, 2.1, 2.15, 2.25, 2.35, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1.14105, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.0698132), Vector3(-0.41452, -3.02527, 0.407007), Vector3(-0.394444, -3.09621, -0.708604), Vector3(-0.589921, -3.08749, -0.644027), Vector3(0.370954, -2.54988, 0.589404), Vector3(0.370954, -2.17823, 0.589403), Vector3(0.0135919, -2.2087, 0.581634), Vector3(-0.274603, -3.00945, 0.575368), Vector3(-0.513127, -3.02989, 0.649262), Vector3(-0.652102, -2.89602, 0.351319), Vector3(-0.0171313, -3.06749, 0.421033), Vector3(-0.142375, -3.14072, 0.245728), Vector3(0, -3.14159, -0.0698132)]
+}
+
+[sub_resource type="Animation" id="Animation_nn0ak"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.949896, -1.04337), Vector3(0.160247, -0.896828, -1.04337), Vector3(0.257, -0.949896, -1.04337)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.57649, -2.7083, -0.13652), Vector3(0.626165, -2.60761, -0.281935), Vector3(0.57649, -2.7083, -0.13652)]
+}
+
+[sub_resource type="Animation" id="Animation_h4usc"]
+resource_name = "shoot"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.14104, -3.14159, -0.109013), Vector3(0.0607534, -3.13498, -0.0562965), Vector3(0.0296706, -3.13985, -0.0628319), Vector3(0, -3.14159, -0.0698132)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -0.984657), Vector3(0.257, -0.586932, -1.03144), Vector3(0.257, -0.595, -1.125)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("model/muzzleflash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("model/muzzleflash:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 3, 3), Vector3(4, 5, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_bu0aa"]
+resource_name = "shove"
+length = 0.7
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.1, 0.15, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.0698132), Vector3(-0.776672, -3.09098, 0.457276), Vector3(0.656322, -2.00929, 1.01714), Vector3(0.877001, -1.04112, 0.940017), Vector3(0.728711, -0.980019, 0.664692), Vector3(0, -3.14159, -0.0698132)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.1, 0.15, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -1.125), Vector3(0.707903, -0.0568708, -0.528256), Vector3(0.161781, -0.244786, -0.908379), Vector3(-0.0833701, -0.492113, -1.07762), Vector3(-0.107895, -0.577228, -1.03932), Vector3(0.257, -0.595, -1.125)]
+}
+
+[sub_resource type="Animation" id="Animation_wkrkn"]
+resource_name = "unequip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.257, -0.595, -1.125), Vector3(0.340056, -0.607577, -1.04937), Vector3(0.257, -0.792768, -0.80837), Vector3(0.0779927, -0.84354, 0.00100893)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.0698132), Vector3(-0.48968, -3.05858, -0.0890478), Vector3(0.0429388, -2.42903, 0.0807096), Vector3(1.16962, -2.72105, -1.02147)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtraw"]
+_data = {
+"RESET": SubResource("Animation_fdfl0"),
+"ammocheck": SubResource("Animation_yycbo"),
+"equip": SubResource("Animation_c5xc3"),
+"idling": SubResource("Animation_m3l61"),
+"reload": SubResource("Animation_ueuri"),
+"run": SubResource("Animation_nn0ak"),
+"shoot": SubResource("Animation_h4usc"),
+"shove": SubResource("Animation_bu0aa"),
+"unequip": SubResource("Animation_wkrkn")
+}
+
+[node name="pistol" type="Node3D"]
+script = ExtResource("1_88scr")
+
+[node name="model" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0997565, -0.00697566, -2.53518e-07, -0.00697566, 0.0997566, 0, 2.52901e-07, 1.76846e-08, -0.1, 0.257, -0.595, -1.125)
+layers = 1048575
+material_override = SubResource("ShaderMaterial_0ygte")
+cast_shadow = 0
+mesh = ExtResource("3_thuow")
+skeleton = NodePath("../../../../../../..")
+
+[node name="muzzleflash" type="MeshInstance3D" parent="model"]
+transform = Transform3D(-1.99513, -0.209269, 7.60554e-06, -0.139513, 2.99269, 5.30474e-07, -5.08268e-06, -1.35363e-09, -3, 0.0398688, 2.75451, 5.46801)
+visible = false
+material_override = SubResource("ShaderMaterial_eqew7")
+mesh = ExtResource("5_11oet")
+skeleton = NodePath("../..")
+
+[node name="light" type="OmniLight3D" parent="model/muzzleflash"]
+transform = Transform3D(1, -1.76582e-18, -3.54924e-16, 1.76582e-18, 1, 6.66134e-17, 3.54924e-16, -6.66134e-17, 1, 0, 0, 0.0773988)
+light_color = Color(1, 1, 0.490196, 1)
+light_energy = 1.2
+omni_range = 10.0
+
+[node name="animplayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qtraw")
+}
+
+[node name="audioplayer" type="AudioStreamPlayer" parent="."]
+
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="maincam" type="Camera3D" parent="."]
+fov = 80.0

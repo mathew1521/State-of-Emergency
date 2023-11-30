@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://btpg0blmcrstf"]
+
+[ext_resource type="Script" path="res://assets/scripts/item.gd" id="1_jgfqy"]
+[ext_resource type="PackedScene" uid="uid://bds1ctqyf8wdw" path="res://assets/items/pistol_ammo/pistol_ammo.tscn" id="1_xtqvq"]
+[ext_resource type="Texture2D" uid="uid://bnaxg1iontd3f" path="res://assets/textures/inventory/bullets.png" id="2_4pn4b"]
+
+[resource]
+script = ExtResource("1_jgfqy")
+name = "Pistol Ammo"
+description = "Ammunition for the pew pew."
+stackable = true
+stacksize = 30
+quantity = 1
+texture = ExtResource("2_4pn4b")
+type = 2
+scene = ExtResource("1_xtqvq")

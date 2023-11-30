@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmcc71rjqs7fh"
+path="res://.godot/imported/Humanoid.obj-db54c127cf5cd2ad1fe8a78f237c222b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Humanoid.obj-db54c127cf5cd2ad1fe8a78f237c222b.mesh"]
+
+source_file="res://assets/models/Humanoid.obj"
+dest_files=["res://.godot/imported/Humanoid.obj-db54c127cf5cd2ad1fe8a78f237c222b.mesh", "res://.godot/imported/Humanoid.obj-db54c127cf5cd2ad1fe8a78f237c222b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

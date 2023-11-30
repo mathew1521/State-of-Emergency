@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8e085tqe0sa0"
+path="res://.godot/imported/R870.obj-0209dc5a59b35a280356d6cb10233831.mesh"
+
+[deps]
+
+files=["res://.godot/imported/R870.obj-0209dc5a59b35a280356d6cb10233831.mesh"]
+
+source_file="res://assets/models/R870.obj"
+dest_files=["res://.godot/imported/R870.obj-0209dc5a59b35a280356d6cb10233831.mesh", "res://.godot/imported/R870.obj-0209dc5a59b35a280356d6cb10233831.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

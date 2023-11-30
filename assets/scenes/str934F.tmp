@@ -1,0 +1,699 @@
+[gd_scene load_steps=35 format=3 uid="uid://detatnigmyjex"]
+
+[ext_resource type="Texture2D" uid="uid://d3d5yfn4gxej0" path="res://assets/textures/placeholderfloor.png" id="1_q23fx"]
+[ext_resource type="Script" path="res://assets/scripts/health.gd" id="2_louxf"]
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="2_qdnqw"]
+[ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/USP.png" id="4_lkmuw"]
+[ext_resource type="Texture2D" uid="uid://dwx6n1echokpl" path="res://assets/textures/ItemContainer.png" id="5_edhsg"]
+[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/USP.obj" id="5_ofjn3"]
+[ext_resource type="ArrayMesh" uid="uid://b8y71i8tw87ug" path="res://assets/models/ItemContainer.obj" id="6_gigp4"]
+[ext_resource type="AudioStream" uid="uid://cremw0adk33x0" path="res://assets/sounds/hk45shoot.wav" id="6_gypkr"]
+[ext_resource type="Texture2D" uid="uid://iktfsw8pcf7m" path="res://assets/textures/R870.png" id="6_wrxr6"]
+[ext_resource type="Resource" uid="uid://c1cclgx4dckbd" path="res://assets/resources/items/usp.tres" id="7_0tw8u"]
+[ext_resource type="ArrayMesh" uid="uid://b8e085tqe0sa0" path="res://assets/models/R870.obj" id="7_pk0hn"]
+[ext_resource type="Texture2D" uid="uid://5n7bxdcwpxlf" path="res://assets/textures/TheScientist.png" id="13_4qxpm"]
+[ext_resource type="Script" path="res://assets/scripts/inventory.gd" id="13_sqihb"]
+[ext_resource type="Script" path="res://assets/scripts/slot.gd" id="14_5ubn3"]
+[ext_resource type="ArrayMesh" uid="uid://bmcc71rjqs7fh" path="res://assets/models/Humanoid.obj" id="14_dxtkm"]
+[ext_resource type="Texture2D" uid="uid://cymdjokoof7xn" path="res://assets/textures/slot.png" id="15_opq8e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ghqo"]
+albedo_texture = ExtResource("1_q23fx")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gnh0"]
+albedo_texture = ExtResource("13_4qxpm")
+texture_filter = 0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mr210"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu44s"]
+albedo_texture = ExtResource("5_edhsg")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tx70t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4njfp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5d830"]
+sky_material = SubResource("ProceduralSkyMaterial_4njfp")
+
+[sub_resource type="Environment" id="Environment_lyi22"]
+background_mode = 2
+sky = SubResource("Sky_5d830")
+tonemap_mode = 2
+tonemap_exposure = 0.6
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+fog_density = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ui8lw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3gms1"]
+height = 1.4
+
+[sub_resource type="Animation" id="Animation_icq2u"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("usp:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("usp:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("usp:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("usp:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.91038e-11, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("usp:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.95943e-20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("usp:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(6.73253e-10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("usp:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0570655, -0.185626, -0.743649)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("usp:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.91038e-11, 1.95943e-20, 0.0378485)]
+}
+
+[sub_resource type="Animation" id="Animation_425hg"]
+resource_name = "usp equip"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("usp:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.572201, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("usp:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.256594, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("usp:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.584299, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("usp:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.884667, -0.25, 0, 0.25, 0, -0.442333, -0.25, 0, 0.25, 0, 2.91038e-11, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("usp:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.74494, -0.25, 0, 0.25, 0, 0.607269, -0.25, 0, 0.25, 0, 1.95943e-20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("usp:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.70469, -0.25, 0, 0.25, 0, -0.333421, -0.25, 0, 0.25, 0, 0.0378485, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("usp:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("usp:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("usp:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="Animation" id="Animation_lntnc"]
+resource_name = "usp shoot"
+length = 0.24
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("usp:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.275847), Vector3(0, -0.0192924, 0.198692), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("usp:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.147739, -0.0153321, 0.0440774), Vector3(0.120503, -0.0655243, -0.12322), Vector3(2.91038e-11, 1.95943e-20, 0.0378485)]
+}
+
+[sub_resource type="Animation" id="Animation_2s3fx"]
+resource_name = "usp unequip"
+length = 0.8
+step = 0.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("usp:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.42036, -0.25, 0, 0.25, 0, 0.42036, 0, 0, 0, 0, 0.572201, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35, 0.36, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("usp:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0328908, -0.25, 0, 0.25, 0, 0.0328908, -0.25, 0, 0.25, 0, -0.256594, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35, 0.36, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("usp:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.41698, -0.25, 0, 0.25, 0, -0.41698, -0.25, 0, 0.25, 0, -0.584299, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35, 0.36, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("usp:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(2.91038e-11, -0.25, 0, 0.25, 0, -0.488858, -0.25, 0, 0.25, 0, -0.488858, -0.25, 0, 0.25, 0, -0.884667, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35, 0.36, 0.8)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("usp:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.95943e-20, -0.25, 0, 0.25, 0, -0.108369, -0.25, 0, 0.25, 0, -0.108369, -0.25, 0, 0.25, 0, 0.74494, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35, 0.36, 0.8)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("usp:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.0378485, -0.25, 0, 0.25, 0, -0.327823, -0.25, 0, 0.25, 0, -0.327823, -0.25, 0, 0.25, 0, -0.70469, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.35, 0.36, 0.8)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("usp:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("usp:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("usp:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("usp:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("usp:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("usp:position:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpuhn"]
+_data = {
+"RESET": SubResource("Animation_icq2u"),
+"usp equip": SubResource("Animation_425hg"),
+"usp shoot": SubResource("Animation_lntnc"),
+"usp unequip": SubResource("Animation_2s3fx")
+}
+
+[sub_resource type="Shader" id="Shader_c22db"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform float fov : hint_range(20, 120) = 40;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_nearest,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_nearest,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	float scale = 1.0 / tan(fov * 0.5 * PI / 180.0); 
+    PROJECTION_MATRIX[0][0] = (1.0 / tan(fov * 0.5 * PI / 100.0)) / (VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	DEPTH = FRAGCOORD.z * 0.7;
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ygte"]
+render_priority = 0
+shader = SubResource("Shader_c22db")
+shader_parameter/fov = 40.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4_lkmuw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghjce"]
+albedo_texture = ExtResource("6_wrxr6")
+texture_filter = 0
+
+[node name="streets" type="Node3D"]
+
+[node name="world" type="Node3D" parent="."]
+
+[node name="stage" type="Node3D" parent="world"]
+
+[node name="ground" type="CSGBox3D" parent="world/stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_2ghqo")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="test" type="CSGBox3D" parent="world/stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1.41742, 0)
+material_override = SubResource("StandardMaterial3D_2ghqo")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="target" type="CSGCylinder3D" parent="world/stage" groups=["vulnerable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.737924, -4.52255)
+use_collision = true
+
+[node name="health" type="Node3D" parent="world/stage/target"]
+script = ExtResource("2_louxf")
+health = 10
+maximumhealth = 10
+
+[node name="humanoid" type="MeshInstance3D" parent="world/stage"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.62459, 0.204413, -5.48989)
+material_override = SubResource("StandardMaterial3D_0gnh0")
+mesh = ExtResource("14_dxtkm")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world/stage"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.09996, 0.00396997, -2.22307)
+physics_material_override = SubResource("PhysicsMaterial_mr210")
+
+[node name="container" type="MeshInstance3D" parent="world/stage/StaticBody3D"]
+layers = 3
+material_override = SubResource("StandardMaterial3D_pu44s")
+mesh = ExtResource("6_gigp4")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/StaticBody3D/container"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_tx70t")
+
+[node name="environment" type="Node3D" parent="world"]
+
+[node name="worldenv" type="WorldEnvironment" parent="world/environment"]
+environment = SubResource("Environment_lyi22")
+
+[node name="light" type="DirectionalLight3D" parent="world/environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_qdnqw")
+
+[node name="standcollider" type="CollisionShape3D" parent="world/player"]
+shape = SubResource("CapsuleShape3D_ui8lw")
+
+[node name="duckcollider" type="CollisionShape3D" parent="world/player"]
+shape = SubResource("CapsuleShape3D_3gms1")
+disabled = true
+
+[node name="head" type="Node3D" parent="world/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="eyes" type="Node3D" parent="world/player/head"]
+
+[node name="maincam" type="Camera3D" parent="world/player/head/eyes"]
+fov = 80.0
+
+[node name="cameracolraycast" type="RayCast3D" parent="world/player/head/eyes/maincam"]
+target_position = Vector3(0, 0, -1000)
+collision_mask = 5
+
+[node name="equipped" type="Node3D" parent="world/player/head/eyes/maincam"]
+
+[node name="animplayer" type="AnimationPlayer" parent="world/player/head/eyes/maincam/equipped"]
+libraries = {
+"": SubResource("AnimationLibrary_vpuhn")
+}
+
+[node name="audioplayer" type="AudioStreamPlayer" parent="world/player/head/eyes/maincam/equipped"]
+stream = ExtResource("6_gypkr")
+
+[node name="timer" type="Timer" parent="world/player/head/eyes/maincam/equipped"]
+one_shot = true
+
+[node name="usp" type="Node3D" parent="world/player/head/eyes/maincam/equipped"]
+transform = Transform3D(1, -6.73253e-10, 1.95943e-20, 6.73253e-10, 1, -2.91038e-11, -7.91638e-26, 2.91038e-11, 1, 0, 0, 0)
+visible = false
+metadata/vars = ExtResource("7_0tw8u")
+
+[node name="model" type="MeshInstance3D" parent="world/player/head/eyes/maincam/equipped/usp"]
+transform = Transform3D(-0.0998896, -0.00436127, -0.00174525, -0.00436194, 0.0999048, 0, 0.00174358, 7.61266e-05, -0.0999848, 0.3, -0.6, -1.125)
+layers = 1048575
+material_override = SubResource("ShaderMaterial_0ygte")
+cast_shadow = 0
+mesh = ExtResource("5_ofjn3")
+skeleton = NodePath("../../../../../../../..")
+
+[node name="vars" type="Node3D" parent="world/player/head/eyes/maincam/equipped/usp"]
+
+[node name="r870" type="Node3D" parent="world/player/head/eyes/maincam/equipped"]
+visible = false
+
+[node name="R870" type="MeshInstance3D" parent="world/player/head/eyes/maincam/equipped/r870"]
+transform = Transform3D(0.499505, 0.0218097, -0.00435911, -0.0218089, 0.499524, 0.000190323, 0.00436327, -1.45519e-11, 0.499981, 0, 0, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_ghjce")
+mesh = ExtResource("7_pk0hn")
+skeleton = NodePath("../../../../../../../..")
+
+[node name="groundcolraycast" type="RayCast3D" parent="world/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 2, 0)
+
+[node name="hud" type="Control" parent="world/player"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="inventorylayer" type="CanvasLayer" parent="world/player/hud"]
+
+[node name="inventory" type="Control" parent="world/player/hud/inventorylayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 940.0
+offset_top = 520.0
+offset_right = 980.0
+offset_bottom = 560.0
+mouse_filter = 2
+script = ExtResource("13_sqihb")
+
+[node name="grabbed" type="Panel" parent="world/player/hud/inventorylayer/inventory"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+offset_right = 120.0
+offset_bottom = 120.0
+script = ExtResource("14_5ubn3")
+
+[node name="visual" type="Sprite2D" parent="world/player/hud/inventorylayer/inventory/grabbed"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("15_opq8e")
+
+[node name="draggableitem" type="Sprite2D" parent="world/player/hud/inventorylayer/inventory/grabbed/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="count" type="Label" parent="world/player/hud/inventorylayer/inventory/grabbed"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 98.0
+offset_right = 128.0
+offset_bottom = 124.0
+
+[node name="rect" type="NinePatchRect" parent="world/player/hud/inventorylayer/inventory"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="container" type="GridContainer" parent="world/player/hud/inventorylayer/inventory/rect"]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 2
+
+[node name="panel" type="Panel" parent="world/player/hud/inventorylayer/inventory"]
+show_behind_parent = true
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -940.0
+offset_top = -520.0
+offset_right = 940.0
+offset_bottom = 520.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="gui_input" from="world/player/hud/inventorylayer/inventory/grabbed" to="world/player/hud/inventorylayer/inventory/grabbed" method="_on_gui_input" flags=18]

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="GunItem" load_steps=5 format=3 uid="uid://drr3oo2k20f1r"]
+
+[ext_resource type="Resource" uid="uid://nt0i2i0q4ogj" path="res://assets/items/shotgun_ammo/shotgun_ammo.tres" id="1_1wm8e"]
+[ext_resource type="Script" path="res://assets/scripts/gunitem.gd" id="1_0010r"]
+[ext_resource type="Texture2D" uid="uid://c7bywujyqffo" path="res://assets/textures/inventory/r870.png" id="2_n7edx"]
+[ext_resource type="PackedScene" uid="uid://dxupji4311jnn" path="res://assets/items/shotgun/shotgun.tscn" id="2_ukgtt"]
+
+[resource]
+script = ExtResource("1_0010r")
+currentammo = 6
+maxcurrentammo = 6
+ammotype = ExtResource("1_1wm8e")
+recoil = 1.0
+spread = 10.0
+pellets = 8
+firerate = 0.71
+firemode = "pump"
+Type = 1
+effectiverange = 10
+damage = 50
+critmultiplier = 10
+name = "Shotgun"
+description = "A close range devastating pew pewer."
+stackable = false
+stacksize = 1
+quantity = 1
+texture = ExtResource("2_n7edx")
+type = 0
+scene = ExtResource("2_ukgtt")

@@ -1,0 +1,211 @@
+[gd_scene load_steps=12 format=3 uid="uid://72t1y1myrwe"]
+
+[ext_resource type="Script" path="res://assets/scripts/gun.gd" id="1_47xjb"]
+[ext_resource type="Texture2D" uid="uid://doc2m50jx5mif" path="res://assets/textures/items/shells.png" id="2_07577"]
+[ext_resource type="ArrayMesh" uid="uid://c0drv0ig4em3w" path="res://assets/models/AmmoBoxShells.obj" id="3_0jeqw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5626c"]
+albedo_texture = ExtResource("2_07577")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_fdfl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.306387, -0.228102, -0.465065)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0257562, -2.34723, 0.48625)]
+}
+
+[sub_resource type="Animation" id="Animation_c5xc3"]
+resource_name = "equip"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.208387, -0.450738, -0.28128), Vector3(0.27279, -0.299097, -0.391595), Vector3(0.303086, -0.220798, -0.457337), Vector3(0.306387, -0.228102, -0.465065)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.552217, -2.65935, 0.259043), Vector3(0.0360163, -2.43207, 0.649632), Vector3(-0.113104, -2.38124, 0.38972), Vector3(0.0257562, -2.34723, 0.48625)]
+}
+
+[sub_resource type="Animation" id="Animation_m3l61"]
+resource_name = "idling"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.306387, -0.228102, -0.465065)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0257562, -2.34723, 0.48625)]
+}
+
+[sub_resource type="Animation" id="Animation_nn0ak"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.284252, -0.298422, -0.45322), Vector3(0.313573, -0.257696, -0.404389), Vector3(0.284252, -0.298422, -0.45322)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.186876, -2.06735, 0.772371), Vector3(0.485679, -2.2799, 0.722063), Vector3(0.186876, -2.06735, 0.772371)]
+}
+
+[sub_resource type="Animation" id="Animation_bu0aa"]
+resource_name = "shove"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.306387, -0.228102, -0.465065), Vector3(0.0723041, -0.159982, -0.513286), Vector3(-0.178879, -0.178158, -0.492986), Vector3(-0.223112, -0.214816, -0.456699), Vector3(0.306387, -0.228102, -0.465065)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0257562, -2.34723, 0.48625), Vector3(-0.316143, -1.68751, 0.552273), Vector3(0.534083, -1.51766, 0.607309), Vector3(0.542653, -1.6127, 0.475643), Vector3(0.0257562, -2.34723, 0.48625)]
+}
+
+[sub_resource type="Animation" id="Animation_wkrkn"]
+resource_name = "unequip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.306387, -0.228102, -0.465065), Vector3(0.37517, -0.228102, -0.332877), Vector3(0.37517, -0.300206, -0.284945), Vector3(0.37517, -0.300206, 0.113515)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0257562, -2.34723, 0.48625), Vector3(0.0257561, -2.74613, 0.48625), Vector3(-0.0852465, -2.06337, 0.368345), Vector3(-0.428788, -1.83496, -0.46834)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtraw"]
+_data = {
+"RESET": SubResource("Animation_fdfl0"),
+"equip": SubResource("Animation_c5xc3"),
+"idling": SubResource("Animation_m3l61"),
+"run": SubResource("Animation_nn0ak"),
+"shove": SubResource("Animation_bu0aa"),
+"unequip": SubResource("Animation_wkrkn")
+}
+
+[node name="shotgun_ammo" type="Node3D"]
+visible = false
+script = ExtResource("1_47xjb")
+
+[node name="model" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0251242, 0.0124489, -0.0285272, 0.0186864, 0.0353519, -0.00103013, 0.0248917, -0.0139738, -0.0280203, 0.306387, -0.228102, -0.465065)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_5626c")
+cast_shadow = 0
+mesh = ExtResource("3_0jeqw")
+skeleton = NodePath("../../../..")
+
+[node name="animplayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qtraw")
+}
+
+[node name="audioplayer" type="AudioStreamPlayer" parent="."]
+
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="maincam" type="Camera3D" parent="."]
+fov = 80.0

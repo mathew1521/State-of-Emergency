@@ -1,0 +1,236 @@
+[gd_scene load_steps=5 format=3 uid="uid://8a5etv1vqw6s"]
+
+[ext_resource type="Script" path="res://assets/scripts/inventory.gd" id="1_selv3"]
+[ext_resource type="Script" path="res://assets/scripts/slot.gd" id="2_3sgjc"]
+[ext_resource type="Texture2D" uid="uid://cymdjokoof7xn" path="res://assets/textures/slot.png" id="3_hskux"]
+[ext_resource type="Theme" uid="uid://tt2v855gbq7q" path="res://assets/themes/soe_generic.tres" id="4_mp12v"]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_selv3")
+
+[node name="slots" type="GridContainer" parent="."]
+top_level = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="slot" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot2" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot2"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot2/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot2/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot3" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot3"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot3/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot3/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot4" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot4"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot4/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot4/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot5" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot5"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot5/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot5/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot6" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot6"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot6/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot6/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot7" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot7"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot7/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot7/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="slot8" type="Panel" parent="slots"]
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 2
+script = ExtResource("2_3sgjc")
+
+[node name="visual" type="Sprite2D" parent="slots/slot8"]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hskux")
+
+[node name="item" type="Sprite2D" parent="slots/slot8/visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="quantity" type="Label" parent="slots/slot8/visual/item"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 120.0
+offset_bottom = 106.0
+scale = Vector2(8, 8)
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 331.0
+offset_right = 718.0
+offset_bottom = 363.0
+scale = Vector2(3, 3)
+theme = ExtResource("4_mp12v")
+scroll_active = false
+
+[connection signal="gui_input" from="slots/slot" to="slots/slot" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot" to="slots/slot" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot" to="slots/slot" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot2" to="slots/slot2" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot2" to="slots/slot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot2" to="slots/slot2" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot3" to="slots/slot3" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot3" to="slots/slot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot3" to="slots/slot3" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot4" to="slots/slot4" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot4" to="slots/slot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot4" to="slots/slot4" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot5" to="slots/slot5" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot5" to="slots/slot5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot5" to="slots/slot5" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot6" to="slots/slot6" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot6" to="slots/slot6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot6" to="slots/slot6" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot7" to="slots/slot7" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot7" to="slots/slot7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot7" to="slots/slot7" method="_on_mouse_exited"]
+[connection signal="gui_input" from="slots/slot8" to="slots/slot8" method="_on_gui_input"]
+[connection signal="mouse_entered" from="slots/slot8" to="slots/slot8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="slots/slot8" to="slots/slot8" method="_on_mouse_exited"]

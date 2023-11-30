@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d02xp4hj1gi6g"]
+
+[ext_resource type="Script" path="res://assets/scripts/slot.gd" id="1_jp6mj"]
+[ext_resource type="Texture2D" uid="uid://cymdjokoof7xn" path="res://assets/textures/slot.png" id="2_odt3i"]
+
+[node name="slot" type="Panel"]
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
+script = ExtResource("1_jp6mj")
+
+[node name="visual" type="Sprite2D" parent="."]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("2_odt3i")
+
+[node name="draggableitem" type="Sprite2D" parent="visual"]
+scale = Vector2(0.1, 0.1)
+
+[node name="count" type="Label" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 98.0
+offset_right = 128.0
+offset_bottom = 124.0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

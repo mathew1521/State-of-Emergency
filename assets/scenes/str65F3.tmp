@@ -1,0 +1,337 @@
+[gd_scene load_steps=46 format=3 uid="uid://detatnigmyjex"]
+
+[ext_resource type="Script" path="res://assets/scripts/pickup.gd" id="1_atccn"]
+[ext_resource type="Script" path="res://assets/scripts/additemdata.gd" id="3_oobp0"]
+[ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/resources/pistol.tres" id="4_1wymv"]
+[ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/USP.png" id="4_23tsb"]
+[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/USP.obj" id="5_d1rxv"]
+[ext_resource type="Resource" uid="uid://drr3oo2k20f1r" path="res://assets/resources/shotgun.tres" id="6_63ntg"]
+[ext_resource type="Texture2D" uid="uid://iktfsw8pcf7m" path="res://assets/textures/R870.png" id="7_a6ydc"]
+[ext_resource type="ArrayMesh" uid="uid://b8e085tqe0sa0" path="res://assets/models/R870.obj" id="8_ppeny"]
+[ext_resource type="Resource" uid="uid://btpg0blmcrstf" path="res://assets/resources/pistol_ammo.tres" id="9_vvh8n"]
+[ext_resource type="Texture2D" uid="uid://cheivbf4x73hc" path="res://assets/textures/AmmoBox.png" id="10_y4gv5"]
+[ext_resource type="ArrayMesh" uid="uid://beq8a7ibbnkjw" path="res://assets/models/AmmoBox.obj" id="11_yeikr"]
+[ext_resource type="Resource" uid="uid://nt0i2i0q4ogj" path="res://assets/resources/shotgun_ammo.tres" id="12_5wbhh"]
+[ext_resource type="Texture2D" uid="uid://doc2m50jx5mif" path="res://assets/textures/AmmoBoxShells.png" id="13_qay7n"]
+[ext_resource type="ArrayMesh" uid="uid://c0drv0ig4em3w" path="res://assets/models/AmmoBoxShells.obj" id="14_exvvc"]
+[ext_resource type="Texture2D" uid="uid://d3d5yfn4gxej0" path="res://assets/textures/placeholderfloor.png" id="15_67hgq"]
+[ext_resource type="Script" path="res://assets/scripts/health.gd" id="16_xuhbg"]
+[ext_resource type="Texture2D" uid="uid://5n7bxdcwpxlf" path="res://assets/textures/TheScientist.png" id="17_ni2o0"]
+[ext_resource type="ArrayMesh" uid="uid://bmcc71rjqs7fh" path="res://assets/models/Humanoid.obj" id="18_hmptj"]
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="19_fy3ml"]
+[ext_resource type="PackedScene" uid="uid://d4g6g7twjobba" path="res://assets/scenes/pistol.tscn" id="21_8nfsn"]
+[ext_resource type="PackedScene" uid="uid://8a5etv1vqw6s" path="res://assets/lib/inventory.tscn" id="21_n3ast"]
+[ext_resource type="PackedScene" uid="uid://dxupji4311jnn" path="res://assets/scenes/shotgun.tscn" id="22_44yvf"]
+[ext_resource type="PackedScene" uid="uid://dgdqkkjpnrpbm" path="res://assets/lib/console.tscn" id="22_kuci4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kopgn"]
+points = PackedVector3Array(-1.8764, -0.0576081, -0.22777, -1.09065, 1.0241, -0.43556, -0.58812, -2.511, -0.215007, -0.569752, -2.7646, -0.183722, -0.566079, -2.7646, 0.0555095, -1.86428, -0.0673826, 0.0492058, -1.67252, 0.300246, 0.0626693, -1.21261, 1.10773, -0.423809, -0.249795, 0.21662, -0.48996, -1.06236, 1.05885, -0.43914, -0.321794, -2.51589, -0.219676, -0.348243, -2.76894, -0.185745, -0.333917, -2.76894, 0.304858, -0.544038, -2.7646, 0.304858, -1.75775, -0.0293708, 0.214738, -1.67509, 0.230196, 0.225711, -0.269631, 2.66947, 0.00842595, -0.269631, 2.67327, -0.283259, -0.269631, 2.65915, -0.408867, -1.18946, 1.14357, -0.426689, -0.25457, 1.39336, -0.487158, 0, 0.21662, -0.490193, 0.321427, -2.51589, -0.219676, 0.347876, -2.76894, -0.185745, 0.333549, -2.76894, 0.304858, 0.543671, -2.7646, 0.304858, -0.518324, -2.66142, 0.304702, -1.48738, 0.302962, 0.251548, -1.61191, 0.160689, 0.248046, -1.70522, -0.0700977, 0.229602, -1.57224, 0.35835, 0.23396, -0.288733, 2.47181, 0.0744208, -0.140693, 2.48756, 0.138626, -0.146938, 2.73029, 0.0400226, -0.146938, 2.73626, -0.060604, -0.146938, 2.73681, -0.149401, -0.146938, 2.73735, -0.275321, -0.146938, 2.73518, -0.385442, 0.269264, 2.65915, -0.408867, 0, 2.4995, -0.437428, -0.140693, 2.48484, -0.437428, 0, 1.40965, -0.487158, 0.249427, 0.21662, -0.48996, 0.254203, 1.39336, -0.487158, 0.587752, -2.511, -0.215007, 0.569385, -2.7646, -0.183722, 0.565711, -2.7646, 0.0555095, 0.517956, -2.66142, 0.304702, 1.86391, -0.0673826, 0.0492058, 1.75738, -0.0293708, 0.214738, 1.70485, -0.0700977, 0.229602, 1.61154, 0.160689, 0.248046, 1.48701, 0.302962, 0.251548, -0.25457, 1.40313, 0.25544, 0, 2.33171, 0.2068, 0, 2.4995, 0.174658, 0, 2.74712, 0.0838375, 0, 2.77862, -0.146755, 0.146571, 2.73518, -0.385442, 0, 2.76776, -0.269328, 0, 2.74224, -0.368476, 0.140326, 2.48484, -0.437428, 0.269264, 2.67327, -0.283259, 1.21224, 1.10773, -0.423809, 1.1891, 1.14357, -0.426689, 1.06199, 1.05885, -0.43914, 1.09028, 1.0241, -0.43556, 1.8764, -0.0576081, -0.22777, 0.254203, 1.40313, 0.25544, 1.67216, 0.300246, 0.0626693, 1.67473, 0.230196, 0.225711, 1.57187, 0.35835, 0.23396, 0.140326, 2.48756, 0.138626, 0.146571, 2.73029, 0.0400226, 0.146571, 2.73626, -0.060604, 0.146571, 2.73681, -0.149401, 0.146571, 2.73735, -0.275321, 0.269264, 2.66947, 0.00842595, 0.288366, 2.47181, 0.0744208)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gnh0"]
+albedo_texture = ExtResource("17_ni2o0")
+texture_filter = 0
+
+[sub_resource type="Resource" id="Resource_ch5cn"]
+script = ExtResource("3_oobp0")
+item = ExtResource("4_1wymv")
+quantity = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7xxp"]
+albedo_texture = ExtResource("4_23tsb")
+texture_filter = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3gunj"]
+points = PackedVector3Array(0, -2.89028, -4.79996, -0.462385, 1.43954, -4.63183, 0, 1.26789, -4.67168, 0.462277, 1.43954, -4.63183, 0.462277, -2.89028, -4.31696, -0.462385, -2.89028, -4.31696, -0.554819, 1.98302, -4.47926, -0.109052, 3.0018, -4.49675, 0.108944, 3.0018, -4.49675, 0.554819, 1.98302, -4.47926, 0.554819, 1.94274, -1.25573, 0.462277, -2.89028, -2.49188, -0.462385, -2.89028, -2.49188, -0.554819, 1.94274, -1.25573, -0.554819, 3.06997, -4.15175, -0.332913, 3.33706, -4.07012, -0.109052, 3.19763, -4.33154, 0.108944, 3.19763, -4.33154, 0.332805, 3.33706, -4.07012, 0.554819, 3.06997, -4.15175, 0.554819, 1.94274, 4.6685, 0, -2.89028, -2.17021, 0.462277, 1.35836, 4.57034, -0.462385, 1.35836, 4.57034, -0.554819, 1.94274, 4.6685, -0.554819, 3.02969, 4.6753, -0.1941, 3.39345, -3.18188, -0.1941, 3.39345, -3.58227, -0.0414919, 3.44055, -3.58227, -0.332913, 3.29678, 4.67724, 0.0413833, 3.44055, -3.58227, 0.193991, 3.39345, -3.58227, 0.193991, 3.39345, -3.18188, 0.332805, 3.29678, 4.67724, 0.554819, 3.02969, 4.6753, 0.249495, 2.67088, 5.12817, 0.124693, 2.45461, 5.12817, -0.124802, 2.45461, 5.12817, -0.249603, 2.67088, 5.12817, -0.124802, 2.88654, 5.12817, -0.0414919, 3.44055, -3.18188, -0.0179219, 3.417, 4.2992, 0.0413833, 3.44055, -3.18188, 0.0178133, 3.417, 4.2992, 0.124693, 2.88654, 5.12817)
+
+[sub_resource type="Resource" id="Resource_y6dts"]
+script = ExtResource("3_oobp0")
+item = ExtResource("4_1wymv")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_f14f7"]
+script = ExtResource("3_oobp0")
+item = ExtResource("6_63ntg")
+quantity = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w66c"]
+albedo_texture = ExtResource("7_a6ydc")
+texture_filter = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4wpc5"]
+points = PackedVector3Array(-0.112393, -0.898177, 4.06013, 0.112361, -0.898177, 4.06013, -0.157331, -0.351444, 4.12098, -0.157331, -0.0394031, 1.94985, -0.116458, 0.204141, -2.89913, -0.0998259, 0.251204, -3.90844, -0.0815918, 0.25664, -4.33183, -4.91738e-07, 0.200103, -4.33183, 0.15733, -0.0394031, 1.94985, 0.15733, -0.351444, 4.12098, 0.08156, 0.25664, -4.33183, 0.0997941, 0.251204, -3.90844, 0.116427, 0.204141, -2.89913, -0.112393, 0.195288, 4.18182, -0.157331, 0.0511495, 2.47159, -0.157331, 0.0433834, 2.24156, -0.116458, 0.441162, -2.89913, -0.0998259, 0.617453, -3.90844, -0.0815918, 0.611861, -4.33183, 0.15733, 0.0433834, 2.24156, 0.116427, 0.441162, -2.89913, 0.15733, 0.0511495, 2.47159, 0.112361, 0.195288, 4.18182, 0.08156, 0.611861, -4.33183, 0.0997941, 0.617453, -3.90844, -0.089908, 0.68859, 1.04973, -0.112393, 0.385402, 2.47159, -0.0998259, 0.617453, -3.61923, -4.91738e-07, 0.668398, -4.33183, -0.089908, 0.68859, -0.420468, 0.112361, 0.385402, 2.47159, 0.0997941, 0.617453, -3.61923, 0.0898763, 0.68859, 1.04973, 0.0898763, 0.68859, -0.420468, -4.91738e-07, 0.675543, -3.90844)
+
+[sub_resource type="Resource" id="Resource_p25hk"]
+script = ExtResource("3_oobp0")
+item = ExtResource("9_vvh8n")
+quantity = 45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvxnn"]
+albedo_texture = ExtResource("10_y4gv5")
+texture_filter = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rw5uj"]
+points = PackedVector3Array(-1, -2.90966, -3.22381, 1, -2.90966, -3.22381, -1, -2.90966, 3.97976, -1, 0.979897, -3.22381, 1, 0.979897, -3.22381, 1, -2.90966, 3.97976, -1, 0.979897, 3.97976, 1, 0.979897, 3.97976)
+
+[sub_resource type="Resource" id="Resource_c8k6n"]
+script = ExtResource("3_oobp0")
+item = ExtResource("12_5wbhh")
+quantity = 24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tnd2"]
+albedo_texture = ExtResource("13_qay7n")
+texture_filter = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cnl1f"]
+points = PackedVector3Array(3, -0.020103, 3.97976, 3, -2.90966, 3.97976, 3, -0.020103, -3.22381, -1, -0.020103, 3.97976, -1, -2.90966, 3.97976, 3, -2.90966, -3.22381, -1, -0.020103, -3.22381, -1, -2.90966, -3.22381)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ghqo"]
+albedo_texture = ExtResource("15_67hgq")
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 0
+
+[sub_resource type="GDScript" id="GDScript_26yoa"]
+script/source = "extends CSGBox3D
+
+var rotation_speed = 1.0
+var float_amplitude = 0.5
+var float_speed = 2.0
+
+var initial_height = 0.0
+var time_passed = 0.0
+
+func _ready():
+	initial_height = position.y
+	time_passed = 0.0
+
+func _process(delta):
+	# Rotate the cube around its local Y-axis
+	rotate(Vector3(0, 1, 0), delta * rotation_speed)
+
+	# Calculate the vertical floating position based on time
+	time_passed += delta
+	var float_offset = sin(time_passed * float_speed) * float_amplitude
+	position.y = initial_height + float_offset
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4njfp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5d830"]
+sky_material = SubResource("ProceduralSkyMaterial_4njfp")
+
+[sub_resource type="Environment" id="Environment_lyi22"]
+background_mode = 2
+sky = SubResource("Sky_5d830")
+tonemap_mode = 2
+tonemap_exposure = 0.6
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+fog_density = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ui8lw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3gms1"]
+height = 1.4
+
+[node name="streets" type="Node3D"]
+
+[node name="world" type="Node3D" parent="."]
+
+[node name="stage" type="Node3D" parent="world"]
+
+[node name="zombie" type="RigidBody3D" parent="world/stage" groups=["vulnerable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.625, 1.4, -5.49)
+
+[node name="collision" type="CollisionShape3D" parent="world/stage/zombie"]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_kopgn")
+
+[node name="mesh" type="MeshInstance3D" parent="world/stage/zombie"]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0gnh0")
+mesh = ExtResource("18_hmptj")
+skeleton = NodePath("../../../..")
+
+[node name="health" type="Node3D" parent="world/stage/zombie"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.625, -0.662076, 0.96745)
+script = ExtResource("16_xuhbg")
+health = 10
+maximumhealth = 10
+
+[node name="usp" type="RigidBody3D" parent="world/stage"]
+transform = Transform3D(4.37114e-08, -1, 3.82137e-15, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, -0.450775, 0)
+collision_layer = 4
+script = ExtResource("1_atccn")
+items = Array[ExtResource("3_oobp0")]([SubResource("Resource_ch5cn")])
+
+[node name="model" type="MeshInstance3D" parent="world/stage/usp"]
+transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.64698e-23, 0.055, 0, -0.0824118, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_n7xxp")
+cast_shadow = 0
+mesh = ExtResource("5_d1rxv")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/usp"]
+transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.64698e-23, 0.055, 0, -0.0824118, 0)
+shape = SubResource("ConvexPolygonShape3D_3gunj")
+
+[node name="usp2" type="RigidBody3D" parent="world/stage"]
+transform = Transform3D(4.37114e-08, -1, 3.82137e-15, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, -0.450775, 0)
+collision_layer = 4
+script = ExtResource("1_atccn")
+items = Array[ExtResource("3_oobp0")]([SubResource("Resource_y6dts")])
+
+[node name="model" type="MeshInstance3D" parent="world/stage/usp2"]
+transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.64698e-23, 0.055, 0, -0.0824118, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_n7xxp")
+cast_shadow = 0
+mesh = ExtResource("5_d1rxv")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/usp2"]
+transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.64698e-23, 0.055, 0, -0.0824118, 0)
+shape = SubResource("ConvexPolygonShape3D_3gunj")
+
+[node name="shotgun" type="RigidBody3D" parent="world/stage"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.657436, -0.470754, 0)
+collision_layer = 4
+script = ExtResource("1_atccn")
+items = Array[ExtResource("3_oobp0")]([SubResource("Resource_f14f7")])
+
+[node name="model" type="MeshInstance3D" parent="world/stage/shotgun"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_1w66c")
+cast_shadow = 0
+mesh = ExtResource("8_ppeny")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/shotgun"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_4wpc5")
+
+[node name="uspammo" type="RigidBody3D" parent="world/stage"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.1255, -0.470754, 0)
+collision_layer = 4
+script = ExtResource("1_atccn")
+items = Array[ExtResource("3_oobp0")]([SubResource("Resource_p25hk")])
+
+[node name="model" type="MeshInstance3D" parent="world/stage/uspammo"]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0.00931415, 0, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_uvxnn")
+cast_shadow = 0
+mesh = ExtResource("11_yeikr")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/uspammo"]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0.00931415, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_rw5uj")
+
+[node name="shotgunammo" type="RigidBody3D" parent="world/stage"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.47995, -0.470754, 0)
+collision_layer = 4
+script = ExtResource("1_atccn")
+items = Array[ExtResource("3_oobp0")]([SubResource("Resource_c8k6n")])
+
+[node name="model" type="MeshInstance3D" parent="world/stage/shotgunammo"]
+transform = Transform3D(-1.74846e-09, 0.04, 0, -0.04, -1.74846e-09, 0, 0, 0, 0.04, 0.0865997, 0, 0)
+layers = 1048575
+material_override = SubResource("StandardMaterial3D_3tnd2")
+cast_shadow = 0
+mesh = ExtResource("14_exvvc")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/shotgunammo"]
+transform = Transform3D(-1.74846e-09, 0.04, 0, -0.04, -1.74846e-09, 0, 0, 0, 0.04, 0.0865997, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_cnl1f")
+
+[node name="ground" type="CSGBox3D" parent="world/stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_2ghqo")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="test" type="CSGBox3D" parent="world/stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1.41742, 0)
+material_override = SubResource("StandardMaterial3D_2ghqo")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world/stage"]
+transform = Transform3D(0.5, 0.707107, -0.5, -0.5, 0.707107, 0.5, 0.707107, 0, 0.707107, 4, 1, -20)
+script = SubResource("GDScript_26yoa")
+
+[node name="environment" type="Node3D" parent="world"]
+
+[node name="worldenv" type="WorldEnvironment" parent="world/environment"]
+environment = SubResource("Environment_lyi22")
+
+[node name="light" type="DirectionalLight3D" parent="world/environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.698039, 0.698039, 0.698039, 1)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+script = ExtResource("19_fy3ml")
+
+[node name="standcollider" type="CollisionShape3D" parent="world/player"]
+shape = SubResource("CapsuleShape3D_ui8lw")
+
+[node name="duckcollider" type="CollisionShape3D" parent="world/player"]
+shape = SubResource("CapsuleShape3D_3gms1")
+disabled = true
+
+[node name="head" type="Node3D" parent="world/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="eyes" type="Node3D" parent="world/player/head"]
+
+[node name="maincam" type="Camera3D" parent="world/player/head/eyes"]
+fov = 80.0
+
+[node name="cameracolraycast" type="RayCast3D" parent="world/player/head/eyes/maincam"]
+target_position = Vector3(0, 0, -1000)
+
+[node name="interactray" type="RayCast3D" parent="world/player/head/eyes/maincam"]
+target_position = Vector3(0, 0, -1000)
+collision_mask = 4
+
+[node name="equipped" type="Node3D" parent="world/player/head/eyes/maincam"]
+
+[node name="pistol" parent="world/player/head/eyes/maincam/equipped" instance=ExtResource("21_8nfsn")]
+
+[node name="shotgun" parent="world/player/head/eyes/maincam/equipped" instance=ExtResource("22_44yvf")]
+
+[node name="groundcolraycast" type="RayCast3D" parent="world/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 2, 0)
+
+[node name="hud" type="Control" parent="world/player"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="inventorylayer" type="CanvasLayer" parent="world/player/hud"]
+
+[node name="inventory" parent="world/player/hud/inventorylayer" instance=ExtResource("21_n3ast")]
+
+[node name="consolelayer" type="CanvasLayer" parent="world/player/hud"]
+
+[node name="console" parent="world/player/hud/consolelayer" instance=ExtResource("22_kuci4")]

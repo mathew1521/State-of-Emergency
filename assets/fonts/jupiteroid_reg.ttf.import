@@ -1,0 +1,38 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://b47mjgpi5b467"
+path="res://.godot/imported/jupiteroid_reg.ttf-d8202be71a3333c9925470c1ad6475d9.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/jupiteroid_reg.ttf"
+dest_files=["res://.godot/imported/jupiteroid_reg.ttf-d8202be71a3333c9925470c1ad6475d9.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

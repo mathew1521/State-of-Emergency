@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://tt2v855gbq7q"]
+
+[ext_resource type="FontFile" uid="uid://b47mjgpi5b467" path="res://assets/fonts/jupiteroid_reg.ttf" id="1_qs1av"]
+
+[resource]
+default_font = ExtResource("1_qs1av")

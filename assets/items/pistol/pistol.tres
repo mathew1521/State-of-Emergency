@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="GunItem" load_steps=5 format=3 uid="uid://scuon6ox1yn5"]
+
+[ext_resource type="Script" path="res://assets/scripts/gunitem.gd" id="1_ojc0l"]
+[ext_resource type="Resource" uid="uid://btpg0blmcrstf" path="res://assets/items/pistol_ammo/pistol_ammo.tres" id="1_xig2w"]
+[ext_resource type="PackedScene" uid="uid://d4g6g7twjobba" path="res://assets/items/pistol/pistol.tscn" id="2_3kt6a"]
+[ext_resource type="Texture2D" uid="uid://kvdechyehvtt" path="res://assets/textures/inventory/usp.png" id="2_24dml"]
+
+[resource]
+script = ExtResource("1_ojc0l")
+currentammo = 15
+maxcurrentammo = 15
+ammotype = ExtResource("1_xig2w")
+recoil = 0.5
+spread = 0.0
+pellets = 1
+firerate = 0.31
+firemode = "semi"
+Type = 1
+effectiverange = 50
+damage = 25
+critmultiplier = 10
+name = "Pistol"
+description = "Pew pew."
+stackable = false
+stacksize = 1
+quantity = 1
+texture = ExtResource("2_24dml")
+type = 0
+scene = ExtResource("2_3kt6a")
