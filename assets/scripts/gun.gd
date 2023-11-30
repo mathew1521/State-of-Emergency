@@ -246,24 +246,9 @@ func _process(_delta):
 		STATE.UNEQUIPPING:
 			player.canrun = false
 			pass
+			
 func _run():
-	
 	pass
-#	if currentState == STATE.IDLE:
-#		playingAnim = true
-#		animplayer.play("run", 0.35)
-#		canshoot = false
-#		canreload = false
-#		currentState = STATE.RUNNING
-#	elif currentState == STATE.RUNNING:
-#		animplayer.play("idling", 0.35)
-#		await animplayer.animation_finished
-#		playingAnim = false
-#		canshoot = true
-#		canreload = true
-#		currentState = STATE.IDLE
-#	else:
-#		print("idk")
 		
 		
 func _input(_event):

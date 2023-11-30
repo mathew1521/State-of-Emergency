@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://brk8i0ovtr802"]
 
-[ext_resource type="Script" path="res://assets/scripts/pickup.gd" id="1_aviqt"]
+[ext_resource type="Script" path="res://assets/scripts/interactable.gd" id="1_pjdgt"]
 [ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/items/pistol/pistol.tres" id="2_o1pku"]
 [ext_resource type="Script" path="res://assets/scripts/additemdata.gd" id="3_jiul4"]
 [ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/items/usp.png" id="4_qlovs"]
@@ -204,7 +204,7 @@ func _process(delta):
 [node name="usp" type="RigidBody3D" parent="world/stage"]
 transform = Transform3D(4.37114e-08, -1, 3.82137e-15, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, -0.450775, 0)
 collision_layer = 4
-script = ExtResource("1_aviqt")
+script = ExtResource("1_pjdgt")
 items = Array[ExtResource("3_jiul4")]([SubResource("Resource_ch5cn")])
 
 [node name="model" type="MeshInstance3D" parent="world/stage/usp"]
@@ -222,7 +222,7 @@ shape = SubResource("ConvexPolygonShape3D_3gunj")
 [node name="usp2" type="RigidBody3D" parent="world/stage"]
 transform = Transform3D(4.37114e-08, -1, 3.82137e-15, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, -0.450775, 0)
 collision_layer = 4
-script = ExtResource("1_aviqt")
+script = ExtResource("1_pjdgt")
 items = Array[ExtResource("3_jiul4")]([SubResource("Resource_y6dts")])
 
 [node name="model" type="MeshInstance3D" parent="world/stage/usp2"]
@@ -240,7 +240,7 @@ shape = SubResource("ConvexPolygonShape3D_3gunj")
 [node name="shotgun" type="RigidBody3D" parent="world/stage"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.657436, -0.470754, 0)
 collision_layer = 4
-script = ExtResource("1_aviqt")
+script = ExtResource("1_pjdgt")
 items = Array[ExtResource("3_jiul4")]([SubResource("Resource_f14f7")])
 
 [node name="model" type="MeshInstance3D" parent="world/stage/shotgun"]
@@ -258,7 +258,7 @@ shape = SubResource("ConvexPolygonShape3D_4wpc5")
 [node name="shotgun2" type="RigidBody3D" parent="world/stage"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.657436, -0.470754, 0)
 collision_layer = 4
-script = ExtResource("1_aviqt")
+script = ExtResource("1_pjdgt")
 items = Array[ExtResource("3_jiul4")]([SubResource("Resource_f14f7")])
 
 [node name="model" type="MeshInstance3D" parent="world/stage/shotgun2"]
@@ -276,7 +276,7 @@ shape = SubResource("ConvexPolygonShape3D_4wpc5")
 [node name="uspammo" type="RigidBody3D" parent="world/stage"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.1255, -0.470754, 0)
 collision_layer = 4
-script = ExtResource("1_aviqt")
+script = ExtResource("1_pjdgt")
 items = Array[ExtResource("3_jiul4")]([SubResource("Resource_p25hk")])
 
 [node name="model" type="MeshInstance3D" parent="world/stage/uspammo"]
@@ -294,7 +294,7 @@ shape = SubResource("ConvexPolygonShape3D_rw5uj")
 [node name="shotgunammo" type="RigidBody3D" parent="world/stage"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.47995, -0.470754, 0)
 collision_layer = 4
-script = ExtResource("1_aviqt")
+script = ExtResource("1_pjdgt")
 items = Array[ExtResource("3_jiul4")]([SubResource("Resource_c8k6n")])
 
 [node name="model" type="MeshInstance3D" parent="world/stage/shotgunammo"]

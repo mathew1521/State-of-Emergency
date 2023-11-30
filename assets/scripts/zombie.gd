@@ -87,7 +87,6 @@ func _target_acquired():
 			var result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(global_transform.origin, player.global_transform.origin))
 			if result:
 				if result.collider == player:
-					print("balls")
 					return true
 	return false
 

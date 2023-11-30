@@ -170,7 +170,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, currentspeed)
 		velocity.z = move_toward(velocity.z, 0, currentspeed)
-	print(velocity.length())
 	if velocity.length() > 1:
 		ismoving = true
 	else:
@@ -193,4 +192,3 @@ func equipped_sway(delta):
 
 func hit():
 	health = health - 10
-	print(health)
