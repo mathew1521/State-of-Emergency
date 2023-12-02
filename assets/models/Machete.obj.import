@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://didpvdb4b7mau"
+path="res://.godot/imported/Machete.obj-93184489022d752b15c9e36d4c6be2d9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Machete.obj-93184489022d752b15c9e36d4c6be2d9.mesh"]
+
+source_file="res://assets/models/Machete.obj"
+dest_files=["res://.godot/imported/Machete.obj-93184489022d752b15c9e36d4c6be2d9.mesh", "res://.godot/imported/Machete.obj-93184489022d752b15c9e36d4c6be2d9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,3 +1,4 @@
+# Player handler.
 extends CharacterBody3D
 @onready var hud = $hud
 @onready var inventory = $hud/inventorylayer/inventory
@@ -20,12 +21,9 @@ enum STATE {
 	AIR
 }
 
-var currentState = STATE.IDLE
+var currentState: STATE = STATE.IDLE
 
 var canrun = true
-var walking = false
-var running = false
-var ducking = false
 var health = 100
 var currentspeed = 5.0
 var bobbingvector = Vector2.ZERO
@@ -86,6 +84,7 @@ func _input(event):
 		mouse_input = event.relative
 
 func _physics_process(delta):
+	print(currentState)
 	# detect movement inputs (WASD)
 	if !inventory:
 		return
@@ -103,9 +102,7 @@ func _physics_process(delta):
 		standcollider.disabled = true
 		duckcollider.disabled = false
 		
-		walking = false
-		running = false
-		ducking = true
+		currentState = STATE.CROUCHING
 		
 	# detect empty space for crouching reasons	
 	elif !ray_cast_3d.is_colliding():
@@ -116,14 +113,10 @@ func _physics_process(delta):
 		if Input.is_action_pressed("run"):
 			if canrun:
 				currentspeed = runspeed
-				walking = false
-				running = true
-				ducking = false
+				currentState = STATE.RUNNING
 		else:
 			currentspeed = walkspeed
-			walking = true
-			running = false
-			ducking = false
+			currentState = STATE.WALKING
 			
 			
 			
@@ -147,15 +140,16 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	
 	# states
-	if running:
-		bobbingintensity = runbobbingintensity
-		bobbingindex += runbobbingstrength*delta
-	elif walking:
-		bobbingintensity = walkbobbingintensity
-		bobbingindex += walkbobbingstrength*delta
-	elif ducking:
-		bobbingintensity = duckbobbingintensity
-		bobbingindex += duckbobbingstrength*delta
+	match currentState:
+		STATE.RUNNING:
+			bobbingintensity = runbobbingintensity
+			bobbingindex += runbobbingstrength*delta
+		STATE.WALKING:
+			bobbingintensity = walkbobbingintensity
+			bobbingindex += walkbobbingstrength*delta
+		STATE.CROUCHING:
+			bobbingintensity = duckbobbingintensity
+			bobbingindex += duckbobbingstrength*delta
 		
 	# jumping
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -170,10 +164,14 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, currentspeed)
 		velocity.z = move_toward(velocity.z, 0, currentspeed)
+		
 	if velocity.length() > 1:
 		ismoving = true
 	else:
 		ismoving = false
+	
+	if !ismoving:
+		currentState = STATE.IDLE
 		
 	move_and_slide()
 	equipped_sway(delta)

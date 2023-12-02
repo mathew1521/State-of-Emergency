@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="GunItem" load_steps=4 format=3 uid="uid://ds7oiu37ynqb3"]
+
+[ext_resource type="PackedScene" uid="uid://dm0y4r84obbb7" path="res://assets/items/machete/machete.tscn" id="1_qr80r"]
+[ext_resource type="Script" path="res://assets/scripts/gunitem.gd" id="3_8xg8p"]
+[ext_resource type="Texture2D" uid="uid://6qqas0vfyv0x" path="res://assets/textures/inventory/machete.png" id="3_oa2lu"]
+
+[resource]
+script = ExtResource("3_8xg8p")
+currentammo = 0
+maxcurrentammo = 0
+recoil = 0.5
+spread = 0.0
+pellets = 1
+firerate = 0.31
+firemode = ""
+Type = 1
+effectiverange = 50
+damage = 25
+critmultiplier = 10
+name = "Machete"
+description = "Swing it like you mean it."
+stackable = false
+stacksize = 1
+quantity = 1
+texture = ExtResource("3_oa2lu")
+type = 0
+scene = ExtResource("1_qr80r")

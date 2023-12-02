@@ -35,7 +35,7 @@ func setEquippedSlot(slot: int):
 	var origSlot = EQUIPPED_SLOT
 	var origItem = slots[EQUIPPED_SLOT].item
 	if isAnimating: return
-	if player.running: return
+	if player.currentState == player.STATE.RUNNING: return
 	EQUIPPED_SLOT = slot
 	setItemName()
 	handleEquip(origSlot, origItem)

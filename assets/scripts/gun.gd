@@ -224,7 +224,7 @@ func _process(_delta):
 	if Input.is_action_just_released("reload"):
 		ammochecktimer = 0.0
 		_reload()
-	if player.running && player.ismoving:
+	if player.currentState == player.STATE.RUNNING && player.ismoving:
 		if currentState == STATE.IDLE:
 			animplayer.play("run", 0.35)
 			currentState = STATE.RUNNING
