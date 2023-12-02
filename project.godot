@@ -24,6 +24,7 @@ Main="*res://assets/scripts/main.gd"
 
 window/size/viewport_width=1000
 window/size/viewport_height=800
+window/size/mode=3
 window/size/borderless=true
 
 [dotnet]

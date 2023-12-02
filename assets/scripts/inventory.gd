@@ -97,7 +97,7 @@ func setItemName(clear = false):
 #				nodeToEquip.isEquipped = false
 
 func handleEquip(origSlot = null, origItem: Item = null):
-	if isopen:
+	if Main.currentSTATE == Main.STATE.INVENTORY:
 		await inventory_closed
 	var origiItem = equipped.get_children()
 	if !origiItem:
@@ -153,15 +153,15 @@ func _input(_event):
 		setEquippedSlot(int(_event.keycode) - 49)
 		slots[EQUIPPED_SLOT].visual_node.self_modulate = Color(0,1,0)
 	if Input.is_action_just_pressed("inventory"):
-		if isopen:
+		if Main.currentSTATE == Main.STATE.INVENTORY:
 			close()
-		elif !isopen:
+		elif Main.currentSTATE == Main.STATE.PLAYING:
 			open()
 	pass
 
 func close():
 	self.visible = false
-	isopen = false
+	Main.currentSTATE = Main.STATE.PLAYING
 	Engine.time_scale = 1
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	emit_signal("inventory_closed")
@@ -175,7 +175,7 @@ func close():
 		
 func open():
 	self.visible = true
-	isopen = true
+	Main.currentSTATE = Main.STATE.INVENTORY
 	Engine.time_scale = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	emit_signal("inventory_opened")

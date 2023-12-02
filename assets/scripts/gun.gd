@@ -279,7 +279,7 @@ func _run():
 		
 		
 func _input(_event):
-	if inventory.isopen:
+	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
 	if !equipped:
 		return

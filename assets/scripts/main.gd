@@ -3,13 +3,10 @@
 # I sure could use all that time on my hands now.
 extends Node
 enum STATE {
-	MAIN_MENU,
 	PLAYING,
 	MENU,
 	INVENTORY,
 	CONSOLE,
 }
-var currentSTATE
+var currentSTATE: STATE = STATE.PLAYING
 
-func _process(delta):
-	pass

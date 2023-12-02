@@ -72,9 +72,7 @@ func interact():
 func _input(event):
 	if !inventory:
 		return
-	if inventory.isopen:
-		return
-	if console.isopen:
+	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
 	# detect mouse input, handle camera rotation (head), and clamp rotation thereof
 	if event is InputEventMouseMotion:
@@ -87,9 +85,7 @@ func _physics_process(delta):
 	# detect movement inputs (WASD)
 	if !inventory:
 		return
-	if inventory.isopen:
-		return
-	if console.isopen:
+	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
 		
 	

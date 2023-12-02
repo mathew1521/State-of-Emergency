@@ -57,12 +57,12 @@ func _process(delta):
 	
 func _input(event):
 	if Input.is_action_just_pressed("console"):
-		if isopen:
-			isopen = false
+		if Main.currentSTATE == Main.STATE.CONSOLE:
+			Main.currentSTATE = Main.STATE.PLAYING
 			self.visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		elif !isopen:
-			isopen = true
+		elif Main.currentSTATE == Main.STATE.PLAYING:
+			Main.currentSTATE = Main.STATE.CONSOLE
 			self.visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
