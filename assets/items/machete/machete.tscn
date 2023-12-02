@@ -288,7 +288,7 @@ one_shot = true
 fov = 80.0
 
 [node name="model" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.193666, 0.0348779, 0.0357304, 0.0380599, 0.0104792, 0.196066, 0.0323195, 0.196656, -0.0167847, 0.748031, -0.268756, -1.50845)
+transform = Transform3D(-0.193666, 0.0348778, 0.0357304, 0.0380599, 0.0104792, 0.196066, 0.0323194, 0.196656, -0.0167847, 0.748031, -0.268756, -1.50845)
 material_override = SubResource("ShaderMaterial_17to4")
 cast_shadow = 0
 mesh = ExtResource("3_f54dk")

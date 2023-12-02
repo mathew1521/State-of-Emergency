@@ -148,7 +148,7 @@ func handleEquip(origSlot = null, origItem: Item = null):
 			child.queue_free()
 				
 func _input(_event):
-	if _event is InputEventKey and (_event.keycode >= KEY_1 && _event.keycode <= KEY_8) and not _event.echo and _event.is_pressed():
+	if _event is InputEventKey and (_event.keycode >= KEY_1 && _event.keycode <= KEY_8) and not _event.echo and _event.is_pressed() and Main.currentSTATE == Main.STATE.PLAYING:
 		slots[EQUIPPED_SLOT].visual_node.self_modulate = Color(1,1,1)
 		setEquippedSlot(int(_event.keycode) - 49)
 		slots[EQUIPPED_SLOT].visual_node.self_modulate = Color(0,1,0)

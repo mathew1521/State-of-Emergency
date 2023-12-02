@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://detatnigmyjex"]
+[gd_scene load_steps=91 format=3 uid="uid://detatnigmyjex"]
 
 [ext_resource type="Script" path="res://assets/scripts/interactable.gd" id="1_pr2fe"]
 [ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/items/pistol/pistol.tres" id="2_27uym"]
@@ -30,6 +30,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://d2qk7bxjhad1l" path="res://assets/models/zombieanimations.res" id="20_3ehrg"]
 [ext_resource type="Script" path="res://assets/scripts/animationsets.gd" id="21_2ckko"]
 [ext_resource type="Script" path="res://assets/scripts/health.gd" id="22_380h8"]
+[ext_resource type="AudioStream" uid="uid://4oucsq13logl" path="res://assets/sounds/music/oneofus.wav" id="27_rbvwo"]
 [ext_resource type="Texture2D" uid="uid://bmfaf3pgrw6jk" path="res://prototyping/road.png" id="28_0j5mp"]
 [ext_resource type="Texture2D" uid="uid://6k2pd5bxcvwr" path="res://assets/textures/vehicles/car.png" id="28_cgtrf"]
 [ext_resource type="Texture2D" uid="uid://0tn1qh3a5n5e" path="res://prototyping/concrete4.png" id="29_2apdr"]
@@ -890,6 +891,10 @@ environment = SubResource("Environment_lyi22")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_color = Color(0.698039, 0.698039, 0.698039, 1)
 shadow_enabled = true
+
+[node name="music" type="AudioStreamPlayer" parent="world/environment"]
+stream = ExtResource("27_rbvwo")
+autoplay = true
 
 [node name="player" type="CharacterBody3D" parent="world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
