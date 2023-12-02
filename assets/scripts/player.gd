@@ -84,7 +84,6 @@ func _input(event):
 		mouse_input = event.relative
 
 func _physics_process(delta):
-	print(currentState)
 	# detect movement inputs (WASD)
 	if !inventory:
 		return

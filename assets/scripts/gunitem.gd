@@ -15,6 +15,6 @@ class_name GunItem
 @export var firerate: float
 @export var firemode: String
 @export_flags("hitscan","projectile") var Type
-@export var effectiverange: int
+@export var effectiverange: float
 @export var damage: int
 @export var critmultiplier: int

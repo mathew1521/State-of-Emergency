@@ -170,6 +170,28 @@ func _shove():
 		playingAnim = false
 	
 func _shoot():
+	if item.type == 1:
+		if currentState == STATE.IDLE:
+			if not timer.is_stopped():
+				return
+			timer.start()
+			var cameracol = getcameracol(item.effectiverange)
+			if animplayer.is_playing():
+				pass
+			else:
+			#	var cameracollision = Get_Camera_Collision()
+				camera_shake.add_trauma(item.recoil)
+				animplayer.play("shoot")
+				isshooting = true
+				playingAnim = true
+				audioplayer.play()
+				hitscan(cameracol)
+				currentState = STATE.SHOOTING
+				if animplayer.is_playing(): await animplayer.animation_finished
+				currentState = STATE.IDLE
+				playingAnim = false
+				isshooting = false
+				pass
 	if item.type == 0:
 		if currentState == STATE.IDLE:
 			if not timer.is_stopped():
