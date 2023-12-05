@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://detatnigmyjex"]
+[gd_scene load_steps=92 format=3 uid="uid://detatnigmyjex"]
 
 [ext_resource type="Script" path="res://assets/scripts/interactable.gd" id="1_pr2fe"]
 [ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/items/pistol/pistol.tres" id="2_27uym"]
@@ -37,7 +37,6 @@
 [ext_resource type="ArrayMesh" uid="uid://cpva1f20tl3sj" path="res://assets/models/vehicles/Car.obj" id="29_skkvd"]
 [ext_resource type="Texture2D" uid="uid://kwtqgnyu2avx" path="res://assets/textures/vehicles/car5_police_la.png" id="30_ksod4"]
 [ext_resource type="ArrayMesh" uid="uid://d0qtlo2nyqwc" path="res://assets/models/vehicles/Car5_Police.obj" id="31_4hhl8"]
-[ext_resource type="Resource" uid="uid://drr3oo2k20f1r" path="res://assets/items/shotgun/shotgun.tres" id="31_ch6dk"]
 
 [sub_resource type="Resource" id="Resource_ch5cn"]
 script = ExtResource("3_5o471")
@@ -361,7 +360,7 @@ quantity = 1
 
 [sub_resource type="Resource" id="Resource_pdgrm"]
 script = ExtResource("3_5o471")
-item = ExtResource("31_ch6dk")
+item = SubResource("Resource_kwuwf")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_allcd"]
@@ -924,9 +923,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 fov = 80.0
 script = ExtResource("18_6erme")
 trauma_reduction_rate = 2.0
-max_x = 5.0
-max_y = 5.0
-max_z = 2.0
+max_z = 4.0
 noise = SubResource("FastNoiseLite_4tgis")
 noise_speed = 45.0
 

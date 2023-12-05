@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/gun.gd" id="1_88scr"]
 [ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/items/usp.png" id="2_2hyy4"]
-[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/USP.obj" id="3_thuow"]
+[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/items/usp/USP_simple.obj" id="3_515sk"]
 [ext_resource type="Texture2D" uid="uid://b20xb0f2pshwy" path="res://assets/textures/muzzleflash.png" id="4_18gt1"]
 [ext_resource type="ArrayMesh" uid="uid://dd6ju4uco2g6" path="res://assets/models/MuzzleFlash.obj" id="5_11oet"]
 
@@ -460,11 +460,11 @@ transform = Transform3D(-0.0997565, -0.00697566, -2.53518e-07, -0.00697566, 0.09
 layers = 1048575
 material_override = SubResource("ShaderMaterial_0ygte")
 cast_shadow = 0
-mesh = ExtResource("3_thuow")
+mesh = ExtResource("3_515sk")
 skeleton = NodePath("../../../../../../..")
 
 [node name="muzzleflash" type="MeshInstance3D" parent="model"]
-transform = Transform3D(-1.99513, -0.209269, 7.60554e-06, -0.139513, 2.99269, 5.30467e-07, -5.08268e-06, -1.36079e-09, -3, 0.0398688, 2.75451, 5.46801)
+transform = Transform3D(-1.99513, -0.209269, 7.60554e-06, -0.139513, 2.99269, 5.30464e-07, -5.08268e-06, -1.36373e-09, -3, 0.0398688, 2.75451, 5.46801)
 visible = false
 material_override = SubResource("ShaderMaterial_eqew7")
 mesh = ExtResource("5_11oet")

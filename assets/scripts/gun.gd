@@ -13,7 +13,6 @@ extends Node3D
 @onready var inventory = $"../../../../../hud/inventorylayer/inventory"
 @onready var camera_shake = $"../.."
 @onready var player = $"../../../../.."
-
 var canreload: bool = false
 var isEquipped: bool = false
 var canshoot: bool = false
@@ -30,6 +29,8 @@ var isrunning: bool = false
 var isaiming: bool = false
 var reserveammo: int
 var ammochecktimer = 0.0
+
+var mouse_mov = Vector2()
 
 enum STATE {
 	IDLE,
@@ -168,6 +169,9 @@ func _shove():
 		currentState = STATE.IDLE
 		isshoving = false
 		playingAnim = false
+
+func _signal_disable_monitoring():
+	$model/StaticBody3D.monitoring = false
 	
 func _shoot():
 	if item.type == 1:
@@ -181,14 +185,22 @@ func _shoot():
 			else:
 			#	var cameracollision = Get_Camera_Collision()
 				camera_shake.add_trauma(item.recoil)
-				animplayer.play("shoot")
+#				var rng: int = randi_range(1,2)
+				melee_anim_dir()
+#				if rng == 1:
+#					animplayer.play("shoot")
+#				if rng == 2:
+#					animplayer.play("shoot_2")
+				$model/StaticBody3D.monitoring = true
 				isshooting = true
 				playingAnim = true
 				audioplayer.play()
-				hitscan(cameracol)
+				#hitscan(cameracol)
 				currentState = STATE.SHOOTING
 				if animplayer.is_playing(): await animplayer.animation_finished
 				currentState = STATE.IDLE
+				$model/StaticBody3D.monitoring = false
+				self.translate(Vector3(0,0,0))
 				playingAnim = false
 				isshooting = false
 				pass
@@ -204,7 +216,6 @@ func _shoot():
 			if animplayer.is_playing():
 				pass
 			else:
-			#	var cameracollision = Get_Camera_Collision()
 				camera_shake.add_trauma(item.recoil)
 				animplayer.play("shoot")
 				isshooting = true
@@ -221,20 +232,6 @@ func _shoot():
 				isshooting = false
 				pass
 				
-func melee_attack():
-	if currentState == STATE.IDLE:
-		if animplayer.is_playing():
-			pass
-		else:
-			camera_shake.add_trauma(item.recoil)
-			animplayer.play("melee")
-			playingAnim = true
-			var cameracol = getcameracol(0.02)
-			hitscan(cameracol)
-			#currentState = STATE.MELEEING
-			if animplayer.is_playing(): await animplayer.animation_finished
-			currentState = STATE.IDLE
-			playingAnim = false
 
 		
 func _process(_delta):
@@ -277,13 +274,27 @@ func _process(_delta):
 func _run():
 	pass
 		
-		
+func melee_anim_dir():
+	var angle = mouse_mov.angle_to(Vector2(1, 0))  # Assuming right is the initial direction
+	if abs(mouse_mov.y) > abs(mouse_mov.x):
+		if mouse_mov.y < 0:
+			animplayer.play("shoot_4")
+		else:
+			animplayer.play("shoot_2")
+	else:
+		if angle < 0:
+			animplayer.play("shoot")
+		else:
+			animplayer.play("shoot_3")
+			
 func _input(_event):
 	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
 	if !equipped:
 		return
-	if currentState == STATE.IDLE: 
+	if currentState == STATE.IDLE:
+		if _event is InputEventMouseMotion:
+			mouse_mov = _event.relative
 		if Input.is_action_pressed("ui_text_backspace"):
 			if equipped:
 				unequip()
@@ -291,6 +302,8 @@ func _input(_event):
 				equip()
 		if Input.is_action_just_pressed("leftclick"):
 			_shoot()
+		if Input.is_action_just_released("leftclick"):
+			pass
 		if Input.is_action_pressed("shove"):
 			_shove()
 	if Input.is_action_just_pressed("run"):
@@ -298,6 +311,7 @@ func _input(_event):
 	if Input.is_action_just_released("run"):
 		_run()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 
 
 func getcameracol(range: float)->Vector3:
@@ -328,7 +342,8 @@ func shotgun_hitscan(colpoint):
 		var spreadDirection2 = spreadDirection.rotated(Vector3.UP, randf_range(-item.spread, item.spread))
 		var newintersection = PhysicsRayQueryParameters3D.create(bulletpoint.get_global_transform().origin, colpoint + spreadDirection * 2 + spreadDirection2)
 		var bulletcol = get_world_3d().direct_space_state.intersect_ray(newintersection)
-		
+		print(bulletcol)
+
 		if bulletcol:
 			damage(bulletcol.collider)
 		
@@ -345,3 +360,8 @@ func damage(Collider):
 				tryhealth.damage(5)
 		pass
 		
+
+func _on_static_body_3d_body_entered(body):
+	if body.is_in_group("zombie"):
+		damage(body)
+	pass # Replace with function body.

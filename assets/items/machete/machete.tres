@@ -8,14 +8,14 @@
 script = ExtResource("3_8xg8p")
 currentammo = 0
 maxcurrentammo = 0
-recoil = 0.5
+recoil = 100.0
 spread = 0.0
 pellets = 1
 firerate = 0.31
 firemode = ""
 Type = 1
 effectiverange = 0.09
-damage = 40
+damage = 10
 critmultiplier = 10
 name = "Machete"
 description = "Swing it like you mean it."

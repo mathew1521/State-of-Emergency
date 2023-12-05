@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dm0y4r84obbb7"]
+[gd_scene load_steps=18 format=3 uid="uid://dm0y4r84obbb7"]
 
 [ext_resource type="Script" path="res://assets/scripts/gun.gd" id="1_qowwt"]
 [ext_resource type="Texture2D" uid="uid://j748b0a0ul5l" path="res://assets/textures/items/machete.png" id="2_jlwa5"]
@@ -52,10 +52,10 @@ tracks/1/path = NodePath("model:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.21293, 2.67908, -0.493928), Vector3(-1.37211, 2.00996, 1.30212)]
+"values": [Vector3(0.21293, 2.67908, -0.493928), Vector3(-0.105353, 2.4958, -0.0277842), Vector3(-1.37211, 2.00996, 1.30212)]
 }
 
 [sub_resource type="Animation" id="Animation_m3l61"]
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.331686, -0.556114, -1.50845), Vector3(0.331686, -0.503747, -1.50845), Vector3(0.331686, -0.556114, -1.50845)]
+"values": [Vector3(0.331686, -0.862474, -1.50845), Vector3(0.331686, -0.718977, -1.50845), Vector3(0.331686, -0.862474, -1.50845)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -111,11 +111,54 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.820305, 3.31613, 0.326377), Vector3(-0.780162, 3.49066, 0.106465), Vector3(-0.820305, 3.31613, 0.326377)]
+"values": [Vector3(-0.558505, 4.36332, -1.16064), Vector3(-0.493928, 4.18879, -0.984366), Vector3(-0.558505, 4.36332, -1.16064)]
 }
 
 [sub_resource type="Animation" id="Animation_1x0a0"]
 resource_name = "shoot"
+length = 0.9
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.55, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.435275, 1),
+"update": 0,
+"values": [Vector3(1.32124, -0.0515353, -0.917516), Vector3(1.16826, -0.0515353, -0.541856), Vector3(0.337017, -0.21953, -1.88979), Vector3(-0.783973, -0.21953, -1.08818), Vector3(-1.60661, -0.493665, -0.306997), Vector3(-0.136209, -0.79097, -0.996374), Vector3(0.748031, -0.268756, -1.50845)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.55, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.435275, 1),
+"update": 0,
+"values": [Vector3(-0.731662, 0.586559, 2.36054), Vector3(-0.50631, 0.490334, 2.52509), Vector3(-0.417134, 2.95685, 1.03847), Vector3(-0.272271, 3.08051, 1.24267), Vector3(-0.0891741, 2.93053, 1.3816), Vector3(-0.41442, 2.30242, 1.18315), Vector3(-1.37211, 2.00996, 1.30212)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_signal_disable_monitoring"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l0dbl"]
+resource_name = "shoot_2"
 length = 0.7
 step = 0.05
 tracks/0/type = "value"
@@ -125,10 +168,10 @@ tracks/0/path = NodePath("model:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.7),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.35, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1.32124, -0.0515353, -0.917516), Vector3(0.813138, -0.142119, -1.68487), Vector3(-0.247823, -0.21953, -1.88979), Vector3(-0.783973, -0.21953, -1.08818), Vector3(0.748031, -0.268756, -1.50845)]
+"values": [Vector3(1.32124, -0.0515353, -0.917516), Vector3(0.813138, 0.889624, -0.589127), Vector3(0.39435, -0.855918, -1.8899), Vector3(0.107779, -0.823824, -1.8899), Vector3(0.748031, -0.268756, -1.50845)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -137,10 +180,24 @@ tracks/1/path = NodePath("model:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.731662, 0.586559, 2.36054), Vector3(-0.567613, 1.95674, 1.6893), Vector3(-0.417134, 2.95685, 1.03847), Vector3(-0.272271, 3.08051, 1.24267), Vector3(-1.37211, 2.00996, 1.30212)]
+"values": [Vector3(-0.731662, 0.586559, 2.36054), Vector3(-1.03519, 0.485649, 2.67053), Vector3(-0.63798, 2.23185, 1.56858), Vector3(-0.0816672, 2.94931, 0.161339), Vector3(-0.598453, 2.97396, 0.332522), Vector3(-1.37211, 2.00996, 1.30212)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_signal_disable_monitoring"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0oca0"]
@@ -153,10 +210,10 @@ tracks/0/path = NodePath("model:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.748031, -0.268756, -1.50845)]
+"values": [Vector3(0.748031, -0.268756, -1.50845), Vector3(0.893026, -0.268756, -1.08555), Vector3(0.748031, -0.268756, -1.50845)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -165,10 +222,10 @@ tracks/1/path = NodePath("model:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-1.37211, 2.00996, 1.30212)]
+"values": [Vector3(-1.37211, 2.00996, 1.30212), Vector3(-1.33325, 0.198117, 2.22271), Vector3(-1.37211, 2.00996, 1.30212)]
 }
 
 [sub_resource type="Animation" id="Animation_aydo7"]
@@ -198,6 +255,92 @@ tracks/1/keys = {
 "values": [Vector3(-1.37211, 2.00996, 1.30212), Vector3(0.170625, 3.03518, 0.667367)]
 }
 
+[sub_resource type="Animation" id="Animation_k7ha0"]
+resource_name = "shoot_3"
+length = 0.9
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.55, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.435275, 1),
+"update": 0,
+"values": [Vector3(-1.15264, -0.0515353, -0.917516), Vector3(-1.09012, -0.203371, -0.859711), Vector3(0.337017, -0.503515, -1.88979), Vector3(0.75584, -0.21953, -1.08818), Vector3(3.26222, -0.21953, -1.08818), Vector3(1.67325, -0.79097, -0.996374), Vector3(0.748031, -0.268756, -1.50845)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.55, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.435275, 1),
+"update": 0,
+"values": [Vector3(-0.762479, -0.541441, -2.42352), Vector3(-0.64409, -0.484825, -2.51087), Vector3(0.132548, 1.93571, 1.14556), Vector3(-0.272271, 2.34936, 1.24267), Vector3(-0.272271, 2.34936, 1.24267), Vector3(-0.413643, 2.72097, 1.18333), Vector3(-1.37211, 2.00996, 1.30212)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_signal_disable_monitoring"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iob7m"]
+resource_name = "shoot_4"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.32124, -0.0515353, -0.917516), Vector3(0.813138, -1.15463, -0.589127), Vector3(0.39435, -0.855918, -1.8899), Vector3(0.107779, -0.823824, -2.10946), Vector3(0.748031, -0.268756, -1.50845)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.731662, 0.586559, 2.36054), Vector3(-1.03519, 0.485649, 2.67053), Vector3(-0.00673861, 2.45476, 0.920624), Vector3(-0.210902, 2.94556, 0.187006), Vector3(-0.598453, 2.97396, 0.332522), Vector3(-1.37211, 2.00996, 1.30212)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_signal_disable_monitoring"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qtraw"]
 _data = {
 "RESET": SubResource("Animation_fdfl0"),
@@ -205,6 +348,9 @@ _data = {
 "idling": SubResource("Animation_m3l61"),
 "run": SubResource("Animation_ydtnf"),
 "shoot": SubResource("Animation_1x0a0"),
+"shoot_2": SubResource("Animation_l0dbl"),
+"shoot_3": SubResource("Animation_k7ha0"),
+"shoot_4": SubResource("Animation_iob7m"),
 "shove": SubResource("Animation_0oca0"),
 "unequip": SubResource("Animation_aydo7")
 }
@@ -271,6 +417,9 @@ shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/texture_albedo = ExtResource("2_jlwa5")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_21oa0"]
+data = PackedVector3Array(0.0591, -0.5482, 0.0787, 0.0591, 0.8427, -2.6566, -0.0591, -0.5482, 0.0787, -0.0591, -0.5482, 0.0787, 0.0591, 0.8427, -2.6566, -0.0591, 0.8427, -2.6566, -0.0591, 1.3809, -2.4706, 0.0591, 1.3809, -2.4706, -0.0591, -0.1694, 0.7785, -0.0591, -0.1694, 0.7785, 0.0591, 1.3809, -2.4706, 0.0591, -0.1694, 0.7785, 0.0591, 1.3809, -2.4706, 0.0591, 0.8427, -2.6566, 0.0591, -0.1694, 0.7785, 0.0591, -0.1694, 0.7785, 0.0591, 0.8427, -2.6566, 0.0591, -0.5482, 0.0787, -0.0591, -0.1694, 0.7785, 0.0591, -0.1694, 0.7785, -0.0591, -1.343, 3.3713, -0.0591, -1.343, 3.3713, 0.0591, -0.1694, 0.7785, 0.0591, -1.343, 3.3713, -0.0591, -0.1694, 0.7785, -0.0591, -0.5482, 0.0787, -0.0591, 1.3809, -2.4706, -0.0591, 1.3809, -2.4706, -0.0591, -0.5482, 0.0787, -0.0591, 0.8427, -2.6566, 0.0591, 0.8427, -2.6566, 0.0591, 1.3809, -2.4706, -0.0591, 0.8427, -2.6566, -0.0591, 0.8427, -2.6566, 0.0591, 1.3809, -2.4706, -0.0591, 1.3809, -2.4706, -0.0591, -1.343, 3.3713, 0.0591, -1.343, 3.3713, -0.0591, -1.7762, 4.414, -0.0591, -1.7762, 4.414, 0.0591, -1.343, 3.3713, 0.0591, -1.7762, 4.414, -0.0591, -0.5482, 0.0787, -0.0591, -0.1694, 0.7785, -0.0591, -1.8636, 2.6183, -0.0591, -1.8636, 2.6183, -0.0591, -0.1694, 0.7785, -0.0591, -1.343, 3.3713, 0.0591, -0.1694, 0.7785, 0.0591, -0.5482, 0.0787, 0.0591, -1.343, 3.3713, 0.0591, -1.343, 3.3713, 0.0591, -0.5482, 0.0787, 0.0591, -1.8636, 2.6183, 0.0591, -0.5482, 0.0787, -0.0591, -0.5482, 0.0787, 0.0591, -1.8636, 2.6183, 0.0591, -1.8636, 2.6183, -0.0591, -0.5482, 0.0787, -0.0591, -1.8636, 2.6183, 0.0591, -1.7762, 4.414, 0.0591, -2.1816, 3.3243, 0.0335, -1.9128, 4.7544, 0.0335, -1.9128, 4.7544, 0.0591, -2.1816, 3.3243, 0.0335, -2.2385, 3.9394, 0.0591, -1.343, 3.3713, 0.0591, -1.8636, 2.6183, 0.0591, -1.7762, 4.414, 0.0591, -1.7762, 4.414, 0.0591, -1.8636, 2.6183, 0.0591, -2.1816, 3.3243, -0.0591, -1.8636, 2.6183, -0.0591, -1.343, 3.3713, -0.0591, -2.1816, 3.3243, -0.0591, -2.1816, 3.3243, -0.0591, -1.343, 3.3713, -0.0591, -1.7762, 4.414, 0.0591, -1.8636, 2.6183, -0.0591, -1.8636, 2.6183, 0.0591, -2.1816, 3.3243, 0.0591, -2.1816, 3.3243, -0.0591, -1.8636, 2.6183, -0.0591, -2.1816, 3.3243, -0.0335, -2.2385, 3.9394, -0.0335, -1.9128, 4.7544, -0.0335, -2.1813, 4.37, -0.0335, -2.1813, 4.37, -0.0335, -1.9128, 4.7544, -0.0335, -1.9885, 4.7421, -0.0591, -2.1816, 3.3243, -0.0591, -1.7762, 4.414, -0.0335, -2.2385, 3.9394, -0.0335, -2.2385, 3.9394, -0.0591, -1.7762, 4.414, -0.0335, -1.9128, 4.7544, 0.0591, -2.1816, 3.3243, -0.0591, -2.1816, 3.3243, 0.0335, -2.2385, 3.9394, 0.0335, -2.2385, 3.9394, -0.0591, -2.1816, 3.3243, -0.0335, -2.2385, 3.9394, -0.0591, -1.7762, 4.414, 0.0591, -1.7762, 4.414, -0.0335, -1.9128, 4.7544, -0.0335, -1.9128, 4.7544, 0.0591, -1.7762, 4.414, 0.0335, -1.9128, 4.7544, 0.0335, -1.9885, 4.7421, 0.0335, -2.1813, 4.37, -0.0335, -1.9885, 4.7421, -0.0335, -1.9885, 4.7421, 0.0335, -2.1813, 4.37, -0.0335, -2.1813, 4.37, 0.0335, -2.2385, 3.9394, -0.0335, -2.2385, 3.9394, 0.0335, -2.1813, 4.37, 0.0335, -2.1813, 4.37, -0.0335, -2.2385, 3.9394, -0.0335, -2.1813, 4.37, -0.0335, -1.9128, 4.7544, 0.0335, -1.9128, 4.7544, -0.0335, -1.9885, 4.7421, -0.0335, -1.9885, 4.7421, 0.0335, -1.9128, 4.7544, 0.0335, -1.9885, 4.7421, 0.0335, -1.9128, 4.7544, 0.0335, -2.2385, 3.9394, 0.0335, -1.9885, 4.7421, 0.0335, -1.9885, 4.7421, 0.0335, -2.2385, 3.9394, 0.0335, -2.1813, 4.37, -0.0761, 1.4131, -2.4357, -0.1511, 1.1052, -2.5464, -0.0761, 2.3211, -4.2348, -0.0761, 2.3211, -4.2348, -0.1511, 1.1052, -2.5464, -0.1511, 2.183, -4.4932, -0.0761, 2.3211, -4.2348, -0.1511, 2.183, -4.4932, 0.0761, 2.3211, -4.2348, 0.0761, 2.3211, -4.2348, -0.1511, 2.183, -4.4932, 0.1511, 2.183, -4.4932, 0.0761, 2.3211, -4.2348, 0.1511, 2.183, -4.4932, 0.0761, 1.4131, -2.4357, 0.0761, 1.4131, -2.4357, 0.1511, 2.183, -4.4932, 0.1511, 1.1052, -2.5464, 0.0761, 1.4131, -2.4357, 0.1511, 1.1052, -2.5464, -0.0761, 1.4131, -2.4357, -0.0761, 1.4131, -2.4357, 0.1511, 1.1052, -2.5464, -0.1511, 1.1052, -2.5464, -0.1511, 1.1052, -2.5464, 0.1511, 1.1052, -2.5464, -0.0761, 0.7703, -2.6876, -0.0761, 0.7703, -2.6876, 0.1511, 1.1052, -2.5464, 0.0761, 0.7703, -2.6876, -0.0761, 2.3211, -4.2348, 0.0761, 2.3211, -4.2348, -0.0761, 1.4131, -2.4357, -0.0761, 1.4131, -2.4357, 0.0761, 2.3211, -4.2348, 0.0761, 1.4131, -2.4357, 0.0761, 1.8629, -4.5754, -0.0761, 1.8629, -4.5754, 0.0761, 0.7703, -2.6876, 0.0761, 0.7703, -2.6876, -0.0761, 1.8629, -4.5754, -0.0761, 0.7703, -2.6876, 0.1511, 2.183, -4.4932, -0.1511, 2.183, -4.4932, 0.0761, 1.8629, -4.5754, 0.0761, 1.8629, -4.5754, -0.1511, 2.183, -4.4932, -0.0761, 1.8629, -4.5754, -0.1511, 2.183, -4.4932, -0.1511, 1.1052, -2.5464, -0.0761, 1.8629, -4.5754, -0.0761, 1.8629, -4.5754, -0.1511, 1.1052, -2.5464, -0.0761, 0.7703, -2.6876, 0.1511, 1.1052, -2.5464, 0.1511, 2.183, -4.4932, 0.0761, 0.7703, -2.6876, 0.0761, 0.7703, -2.6876, 0.1511, 2.183, -4.4932, 0.0761, 1.8629, -4.5754)
+
 [node name="machete" type="Node3D"]
 script = ExtResource("1_qowwt")
 
@@ -288,7 +437,17 @@ one_shot = true
 fov = 80.0
 
 [node name="model" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.193666, 0.0348778, 0.0357304, 0.0380599, 0.0104792, 0.196066, 0.0323194, 0.196656, -0.0167847, 0.748031, -0.268756, -1.50845)
+transform = Transform3D(-0.193666, 0.0348778, 0.0357305, 0.0380599, 0.0104792, 0.196066, 0.0323194, 0.196656, -0.0167847, 0.748031, -0.268756, -1.50845)
 material_override = SubResource("ShaderMaterial_17to4")
 cast_shadow = 0
 mesh = ExtResource("3_f54dk")
+
+[node name="StaticBody3D" type="Area3D" parent="model"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="model/StaticBody3D"]
+transform = Transform3D(1.06, 1.49012e-08, -5.4948e-08, -1.78814e-07, 1.06, 7.45058e-08, 3.53903e-08, -9.68575e-08, 1.06, 0.0202208, 1.64925, -0.172348)
+shape = SubResource("ConcavePolygonShape3D_21oa0")
+
+[connection signal="area_entered" from="model/StaticBody3D" to="." method="_on_static_body_3d_area_entered"]
+[connection signal="body_entered" from="model/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]

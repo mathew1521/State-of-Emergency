@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/items/pistol/pistol.tres" id="2_o1pku"]
 [ext_resource type="Script" path="res://assets/scripts/additemdata.gd" id="3_jiul4"]
 [ext_resource type="Texture2D" uid="uid://dptlmgex1xb7g" path="res://assets/textures/items/usp.png" id="4_qlovs"]
-[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/USP.obj" id="5_3bxvn"]
+[ext_resource type="ArrayMesh" uid="uid://2ujc6q1x7sor" path="res://assets/models/items/usp/USP_simple.obj" id="5_qw2dk"]
 [ext_resource type="Resource" uid="uid://nt0i2i0q4ogj" path="res://assets/items/shotgun_ammo/shotgun_ammo.tres" id="6_1aaed"]
 [ext_resource type="PackedScene" uid="uid://dxupji4311jnn" path="res://assets/items/shotgun/shotgun.tscn" id="7_gibk4"]
 [ext_resource type="Script" path="res://assets/scripts/gunitem.gd" id="8_l5l2t"]
@@ -212,7 +212,7 @@ transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.6469
 layers = 1048575
 material_override = SubResource("StandardMaterial3D_n7xxp")
 cast_shadow = 0
-mesh = ExtResource("5_3bxvn")
+mesh = ExtResource("5_qw2dk")
 skeleton = NodePath("../../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/usp"]
@@ -230,7 +230,7 @@ transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.6469
 layers = 1048575
 material_override = SubResource("StandardMaterial3D_n7xxp")
 cast_shadow = 0
-mesh = ExtResource("5_3bxvn")
+mesh = ExtResource("5_qw2dk")
 skeleton = NodePath("../../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world/stage/usp2"]
