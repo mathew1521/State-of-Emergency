@@ -200,61 +200,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_0oca0"]
-resource_name = "shove"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("model:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.748031, -0.268756, -1.50845), Vector3(0.893026, -0.268756, -1.08555), Vector3(0.748031, -0.268756, -1.50845)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("model:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.37211, 2.00996, 1.30212), Vector3(-1.33325, 0.198117, 2.22271), Vector3(-1.37211, 2.00996, 1.30212)]
-}
-
-[sub_resource type="Animation" id="Animation_aydo7"]
-resource_name = "unequip"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("model:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.748031, -0.268756, -1.50845), Vector3(0.748031, -1.75064, -1.50845)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("model:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.37211, 2.00996, 1.30212), Vector3(0.170625, 3.03518, 0.667367)]
-}
-
 [sub_resource type="Animation" id="Animation_k7ha0"]
 resource_name = "shoot_3"
 length = 0.9
@@ -339,6 +284,61 @@ tracks/2/keys = {
 "args": [],
 "method": &"_signal_disable_monitoring"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_0oca0"]
+resource_name = "shove"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.748031, -0.268756, -1.50845), Vector3(0.893026, -0.268756, -1.08555), Vector3(0.748031, -0.268756, -1.50845)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.37211, 2.00996, 1.30212), Vector3(-1.33325, 0.198117, 2.22271), Vector3(-1.37211, 2.00996, 1.30212)]
+}
+
+[sub_resource type="Animation" id="Animation_aydo7"]
+resource_name = "unequip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("model:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.748031, -0.268756, -1.50845), Vector3(0.748031, -1.75064, -1.50845)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("model:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.37211, 2.00996, 1.30212), Vector3(0.170625, 3.03518, 0.667367)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qtraw"]

@@ -286,6 +286,7 @@ func melee_anim_dir():
 			animplayer.play("shoot")
 		else:
 			animplayer.play("shoot_3")
+	mouse_mov = Vector2()
 			
 func _input(_event):
 	if !Main.currentSTATE == Main.STATE.PLAYING:
@@ -354,6 +355,9 @@ func damage(Collider):
 		print(Collider.get_parent().get_parent().get_parent().get_parent().name)
 		var tryhealth = Collider.get_parent().get_parent().get_parent().get_parent().get_node("health")
 		if tryhealth:
+			if item.type == 0:
+				tryhealth.shove(global_transform.origin.direction_to(Collider))
+				print("yeah im cool with that")
 			if "damage" in item:
 				tryhealth.damage(item.damage/10)
 			else:

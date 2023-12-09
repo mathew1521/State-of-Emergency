@@ -23,4 +23,7 @@ func die():
 func _process(_delta):
 	if health <= 0:
 		die()
-		
+	
+func shove(dir):
+	var entity = self.get_parent()
+	entity.pushback(dir)

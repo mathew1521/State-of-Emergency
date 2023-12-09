@@ -104,3 +104,8 @@ func _on_health_healthtaken():
 	playerspotted = true
 	anim_tree.set("parameters/conditions/walk", true)
 	return true
+
+func pushback(dir):
+	var pushback_dir = -dir.normalized()
+	velocity += pushback_dir * 10
+	
