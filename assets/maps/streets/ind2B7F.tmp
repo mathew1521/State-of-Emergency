@@ -360,7 +360,7 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lf3o"]
 albedo_texture = ExtResource("33_gflt6")
-uv1_scale = Vector3(2, -8.89, 1)
+uv1_scale = Vector3(2, 5, 1)
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xbdc"]

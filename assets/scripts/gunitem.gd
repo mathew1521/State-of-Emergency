@@ -8,7 +8,8 @@ class_name GunItem
 @export var maxcurrentammo: int
 @export var ammotype: Item
 @export var recoil: float
-
+@export var stamina_drain: int = 0
+@export var stamina_needed: int = 0
 
 @export var spread: float
 @export var pellets: int = 1

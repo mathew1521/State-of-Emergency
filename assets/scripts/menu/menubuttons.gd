@@ -10,7 +10,7 @@ func _on_exit_pressed():
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://assets/maps/streets/streets.tscn")
+	get_tree().change_scene_to_file("res://assets/maps/streets/industry.tscn")
 	pass
 
 func _on_continue_pressed():

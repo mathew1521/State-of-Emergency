@@ -24,21 +24,27 @@ enum STATE {
 var currentState: STATE = STATE.IDLE
 
 var canrun = true
-var health = 100
+
+var stamina_cooldown = 0
+var dangerousfall: bool
+var falldamage: float
+@export_group("Player Statistics")
+@export var stamina = 100
+@export var health = 100
+@export var stamina_chargetime = 5
+@export var stamina_chargerate = 0.18
+@export var stamina_drainrate = 0.5
 var currentspeed = 5.0
 var bobbingvector = Vector2.ZERO
 var bobbingindex = 0.0
 var bobbingintensity = 0.0
-
 @export_group("Camera Shake")
 @export var runbobbingstrength = 19.0 # 22.0 default
 @export var walkbobbingstrength = 12.0
 @export var duckbobbingstrength = 10.0
-
 @export var runbobbingintensity = 0.1
 @export var walkbobbingintensity = 0.05
 @export var duckbobbingintensity = 0.025
-
 @export_group("Movement Variables")
 @export var walkspeed = 3
 @export var runspeed = 6 # 8.0 default
@@ -87,34 +93,32 @@ func _physics_process(delta):
 		return
 	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
-		
-	
-	# ... existing code ...
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	if Input.is_action_pressed("duck"): # detect crouching (CTRL)
 		currentspeed = duckingspeed
 		head.position.y = lerp(head.position.y, 0.6 + duckingdepth, delta*lerpspeed)
 		standcollider.disabled = true
 		duckcollider.disabled = false
-		
 		currentState = STATE.CROUCHING
-		
-	# detect empty space for crouching reasons	
+		# detect empty space for crouching reasons	
 	elif !ray_cast_3d.is_colliding():
 		head.position.y = lerp(head.position.y, 0.6, delta*lerpspeed)
 		standcollider.disabled = false
 		duckcollider.disabled = true
 		
 		if Input.is_action_pressed("run"):
-			if canrun:
+			if canrun && stamina > 0:
 				currentspeed = runspeed
 				currentState = STATE.RUNNING
+			else:
+				currentspeed = walkspeed
+				currentState = STATE.WALKING
 		else:
 			currentspeed = walkspeed
-			currentState = STATE.WALKING
-			
-			
-			
+			currentState = STATE.WALKING	
+	if is_on_floor() && dangerousfall:
+		health -= falldamage
+		dangerousfall = false
 	if is_on_floor() && input_dir != Vector2.ZERO:
 		# handle camera bobbing, as well as the viewmodel bobbing
 		bobbingvector.y = sin(bobbingindex)
@@ -133,6 +137,9 @@ func _physics_process(delta):
 	# add the gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		if velocity.y < -10:
+			dangerousfall = true
+			falldamage = floorf(-velocity.y) * 5
 	
 	# states
 	match currentState:
@@ -159,7 +166,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, currentspeed)
 		velocity.z = move_toward(velocity.z, 0, currentspeed)
-		
+	
 	if velocity.length() > 1:
 		ismoving = true
 	else:
@@ -167,9 +174,34 @@ func _physics_process(delta):
 	
 	if !ismoving:
 		currentState = STATE.IDLE
-		
+	
+	if ismoving && currentState == STATE.RUNNING:
+		stamina_decrement()
+	elif !currentState == STATE.RUNNING:
+		if stamina_cooldown > 0:
+			stamina_cooldown -= delta
+		elif stamina_cooldown <= 0:
+			stamina_increment()
+			
 	move_and_slide()
 	equipped_sway(delta)
+	
+func stamina_decrement():
+	stamina -= stamina_drainrate
+	if stamina < 0:
+		stamina = 0
+	stamina_cooldown = stamina_chargetime
+		
+func stamina_increment():
+	stamina += stamina_chargerate
+	if stamina > 100:
+		stamina = 100
+
+func stamina_drain_other(todrain: int = 0):
+	stamina -= todrain
+	if stamina < 0:
+		stamina = 0
+	stamina_cooldown = stamina_chargetime
 	
 func equipped_sway(delta):
 	
@@ -180,8 +212,7 @@ func equipped_sway(delta):
 	var rotationX = Basis().rotated(Vector3(1,0,0), -mouseY)
 	var targetRotation = rotationX * rotationY
 	
-	equipped.basis = equipped.basis.slerp(targetRotation, 5 * delta)
-
+	equipped.basis.orthonormalized().slerp(targetRotation, 5 * delta)
 
 func hit():
 	health = health - 10

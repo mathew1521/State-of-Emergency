@@ -29,8 +29,7 @@ var isrunning: bool = false
 var isaiming: bool = false
 var reserveammo: int
 var ammochecktimer = 0.0
-
-var mouse_mov = Vector2()
+var mouse_mov = Vector2(0,0)
 
 enum STATE {
 	IDLE,
@@ -175,6 +174,7 @@ func _signal_disable_monitoring():
 	
 func _shoot():
 	if item.type == 1:
+		print(mouse_mov.length())
 		if currentState == STATE.IDLE:
 			if not timer.is_stopped():
 				return
@@ -183,10 +183,14 @@ func _shoot():
 			if animplayer.is_playing():
 				pass
 			else:
+				if player.stamina < item.stamina_needed:
+					print("no stamina, causation of the melee kind")
+					return
 			#	var cameracollision = Get_Camera_Collision()
 				camera_shake.add_trauma(item.recoil)
 #				var rng: int = randi_range(1,2)
 				melee_anim_dir()
+				player.stamina_drain_other(item.stamina_drain)
 #				if rng == 1:
 #					animplayer.play("shoot")
 #				if rng == 2:
@@ -200,7 +204,6 @@ func _shoot():
 				if animplayer.is_playing(): await animplayer.animation_finished
 				currentState = STATE.IDLE
 				$model/StaticBody3D.monitoring = false
-				self.translate(Vector3(0,0,0))
 				playingAnim = false
 				isshooting = false
 				pass
@@ -289,6 +292,7 @@ func melee_anim_dir():
 	mouse_mov = Vector2()
 			
 func _input(_event):
+	print(mouse_mov.length())
 	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
 	if !equipped:
@@ -301,8 +305,16 @@ func _input(_event):
 				unequip()
 			if !equipped:
 				equip()
+		if Input.is_action_pressed("leftclick"):
+			if item.type == 1:
+				if mouse_mov.length() < 2:
+					print("swing harder")
+					return
+				else:
+					_shoot()
 		if Input.is_action_just_pressed("leftclick"):
-			_shoot()
+			if item.type != 1:
+				_shoot()
 		if Input.is_action_just_released("leftclick"):
 			pass
 		if Input.is_action_pressed("shove"):
