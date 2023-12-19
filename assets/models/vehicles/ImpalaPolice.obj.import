@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dadddpbs011fc"
+path="res://.godot/imported/ImpalaPolice.obj-d38e19a3ba5e207e3f62d7569c6db9db.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ImpalaPolice.obj-d38e19a3ba5e207e3f62d7569c6db9db.mesh"]
+
+source_file="res://assets/models/vehicles/ImpalaPolice.obj"
+dest_files=["res://.godot/imported/ImpalaPolice.obj-d38e19a3ba5e207e3f62d7569c6db9db.mesh", "res://.godot/imported/ImpalaPolice.obj-d38e19a3ba5e207e3f62d7569c6db9db.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

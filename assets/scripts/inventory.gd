@@ -10,6 +10,8 @@ var hoveredslot: int
 var isAnimating: bool = false
 signal inventory_closed
 signal inventory_opened
+var defaultcolour: Color = Color(1,1,1)
+@export var selectedcolour: Color
 @onready var player = $"../../.."
 @onready var item = $item
 @onready var equipped = $"../../../head/eyes/maincam/equipped"
@@ -24,7 +26,7 @@ var itemEquipMap = {
 	
 func _ready():
 	slots = slotsholder.get_children()
-	slots[EQUIPPED_SLOT].visual_node.self_modulate = Color(0,1,0)
+	slots[EQUIPPED_SLOT].visual_node.self_modulate = selectedcolour
 	self.visible = false
 	isopen = false
 	for i in startingItems:
@@ -177,7 +179,7 @@ func open():
 	self.visible = true
 	Main.currentSTATE = Main.STATE.INVENTORY
 	Engine.time_scale = 0
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	emit_signal("inventory_opened")
 func AddItem(item: Item, amount: int = 1):
 	item = item.duplicate()

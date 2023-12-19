@@ -292,7 +292,7 @@ func melee_anim_dir():
 	mouse_mov = Vector2()
 			
 func _input(_event):
-	print(mouse_mov.length())
+	#print(mouse_mov.length())
 	if !Main.currentSTATE == Main.STATE.PLAYING:
 		return
 	if !equipped:
@@ -327,11 +327,11 @@ func _input(_event):
 
 
 
-func getcameracol(range: float)->Vector3:
+func getcameracol(rayrange: float)->Vector3:
 	var cam = get_viewport().get_camera_3d()
 	var viewport = get_viewport().get_size()
 	var rayorigin = cam.project_ray_origin(viewport/2)
-	var rayend = rayorigin + cam.project_ray_normal(viewport/2)*range # Find a way to get stuff rolling
+	var rayend = rayorigin + cam.project_ray_normal(viewport/2)*rayrange # Find a way to get stuff rolling
 	var newintersection = PhysicsRayQueryParameters3D.create(rayorigin,rayend)
 	var intersection = get_world_3d().direct_space_state.intersect_ray(newintersection)
 	

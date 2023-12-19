@@ -85,9 +85,9 @@ func _on_gui_input(event: InputEvent):
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 		if !inventory.isdragging && !isdragging:
-			inventory.slots[inventory.EQUIPPED_SLOT].visual_node.self_modulate = Color(1,1,1)
+			inventory.slots[inventory.EQUIPPED_SLOT].visual_node.self_modulate = inventory.defaultcolour
 			inventory.setEquippedSlot(slot_index)
-			inventory.slots[inventory.EQUIPPED_SLOT].visual_node.self_modulate = Color(0,1,0)
+			inventory.slots[inventory.EQUIPPED_SLOT].visual_node.self_modulate = inventory.selectedcolour
 		candrag = false
 		inventory.isdragging = false
 		isdragging = false

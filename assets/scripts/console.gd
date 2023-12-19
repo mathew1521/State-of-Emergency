@@ -49,13 +49,13 @@ func loadResources(directory):
 	else:
 		pass
 	return itemArrayNames
-	return itemArrayResources
+	#return itemArrayResources
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("console"):
 		if Main.currentSTATE == Main.STATE.CONSOLE:
 			Main.currentSTATE = Main.STATE.PLAYING

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgjtrl6lerksb"
+path="res://.godot/imported/Hummer.obj-74b1b79c15dbd1e9c3fa07ae673d24e0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Hummer.obj-74b1b79c15dbd1e9c3fa07ae673d24e0.mesh"]
+
+source_file="res://assets/models/vehicles/Hummer.obj"
+dest_files=["res://.godot/imported/Hummer.obj-74b1b79c15dbd1e9c3fa07ae673d24e0.mesh", "res://.godot/imported/Hummer.obj-74b1b79c15dbd1e9c3fa07ae673d24e0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

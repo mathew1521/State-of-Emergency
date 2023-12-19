@@ -11,6 +11,8 @@ extends CharacterBody3D
 @onready var duckcollider = $duckcollider
 @onready var ray_cast_3d = $groundcolraycast # for crouching and guns
 @onready var interactray = $head/eyes/maincam/interactray # separate, for interacting with objects (doors, items..)
+@onready var cursorcentercontainer = $hud/cursor/centercontainer
+@onready var cursor = $hud/cursor/centercontainer/texture
 # couple local variables to handle movement states and camera logic stuff
 
 enum STATE {
@@ -48,7 +50,7 @@ var bobbingintensity = 0.0
 @export_group("Movement Variables")
 @export var walkspeed = 3
 @export var runspeed = 6 # 8.0 default
-@export var duckingspeed = 2.0
+@export var duckingspeed = 1.0
 @export var jump = 3.2
 @export var mousesens = 0.1
 
@@ -56,7 +58,7 @@ var vmlerpspeed = 2.0
 var lerpspeed = 10.0
 var mouse_input: Vector2
 var direction = Vector3.ZERO
-var duckingdepth = -0.8
+var duckingdepth = -0.7
 var ismoving = false
 
 # get the gravity from the project settings to be synced with RigidBody nodes
@@ -64,9 +66,12 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # lock cursor
 func _ready():
+	#defaultcursorpos = cursor.position
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent):
+	if Engine.time_scale == 0:
+		return
 	if Input.is_action_just_pressed("interact"):
 		interact()
 		
@@ -76,23 +81,35 @@ func interact():
 		
 		
 func _input(event):
+	if Engine.time_scale == 0:
+		return
 	if !inventory:
 		return
-	if !Main.currentSTATE == Main.STATE.PLAYING:
-		return
+#	if !Main.currentSTATE == Main.STATE.PLAYING:
+#		return
 	# detect mouse input, handle camera rotation (head), and clamp rotation thereof
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mousesens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mousesens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		mouse_input = event.relative
-
+		
+func _process(delta):
+	if Main.currentSTATE == Main.STATE.PLAYING:
+		cursor.position = get_viewport().size / 2.0
+		pass
+	else:
+		cursor.position = cursor.get_global_mouse_position()
+		
 func _physics_process(delta):
+	if Engine.time_scale == 0:
+		return
 	# detect movement inputs (WASD)
 	if !inventory:
 		return
-	if !Main.currentSTATE == Main.STATE.PLAYING:
-		return
+#	if !Main.currentSTATE == Main.STATE.PLAYING:
+#		return
+		
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	if Input.is_action_pressed("duck"): # detect crouching (CTRL)
 		currentspeed = duckingspeed
@@ -205,14 +222,15 @@ func stamina_drain_other(todrain: int = 0):
 	
 func equipped_sway(delta):
 	
+	
 	var mouseX = mouse_input.x * vmlerpspeed/3000
 	var mouseY = mouse_input.y * vmlerpspeed/3000
 	
-	var rotationY = Basis().rotated(Vector3(0,1,0), mouseX)
-	var rotationX = Basis().rotated(Vector3(1,0,0), -mouseY)
-	var targetRotation = rotationX * rotationY
 	
-	equipped.basis.orthonormalized().slerp(targetRotation, 5 * delta)
+	var rotationY = Basis().rotated(Vector3(0,1,0).normalized(), mouseX)
+	var rotationX = Basis().rotated(Vector3(1,0,0).normalized(), -mouseY)
+	var targetRotation = rotationX * rotationY
+	equipped.basis = equipped.basis.orthonormalized().slerp(targetRotation, 5 * delta)
 
 func hit():
 	health = health - 10

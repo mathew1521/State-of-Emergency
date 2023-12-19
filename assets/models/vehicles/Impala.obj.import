@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cghheii1irviv"
+path="res://.godot/imported/Impala.obj-35563be991b0a57aed2cec6297d061dc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Impala.obj-35563be991b0a57aed2cec6297d061dc.mesh"]
+
+source_file="res://assets/models/vehicles/Impala.obj"
+dest_files=["res://.godot/imported/Impala.obj-35563be991b0a57aed2cec6297d061dc.mesh", "res://.godot/imported/Impala.obj-35563be991b0a57aed2cec6297d061dc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

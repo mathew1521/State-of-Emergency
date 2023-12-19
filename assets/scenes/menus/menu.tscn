@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxbar47b1ehnb"]
+[gd_scene load_steps=5 format=3 uid="uid://bxbar47b1ehnb"]
 
 [ext_resource type="Texture2D" uid="uid://d1q5oc6oacm6p" path="res://assets/menubg.png" id="1_0tcmi"]
 [ext_resource type="Script" path="res://assets/scripts/menu/menubuttons.gd" id="2_cs7lc"]
 [ext_resource type="AudioStream" uid="uid://cwbuuuj3w3hwc" path="res://assets/sounds/music/callofthevoid.wav" id="3_f4xqo"]
+[ext_resource type="AudioStream" uid="uid://ehmaqos7t3h0" path="res://assets/sounds/click.wav" id="4_1lmr4"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -37,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "State of Emergency"
 
-[node name="buttons" type="VBoxContainer" parent="."]
+[node name="buttons" type="VBoxContainer" parent="." node_paths=PackedStringArray("sound")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -53,6 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 script = ExtResource("2_cs7lc")
+sound = NodePath("../click")
 
 [node name="continue" type="Button" parent="buttons"]
 layout_mode = 2
@@ -70,6 +72,9 @@ text = "Quit
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f4xqo")
 autoplay = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1lmr4")
 
 [connection signal="pressed" from="buttons/continue" to="buttons" method="_on_continue_pressed"]
 [connection signal="pressed" from="buttons/start" to="buttons" method="_on_start_pressed"]

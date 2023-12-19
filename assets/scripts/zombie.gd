@@ -21,8 +21,9 @@ func _ready():
 	#anim_tree.active = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
+	return
 	if Engine.time_scale == 0:
 		return
 	
@@ -78,7 +79,7 @@ func _target_in_range():
 
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 0.6:
-		var dir = global_position.direction_to(player.global_position)
+		var _dir = global_position.direction_to(player.global_position)
 		player.hit()
 
 func _target_acquired():
@@ -93,7 +94,7 @@ func _target_acquired():
 	return false
 
 
-func faceplayer(pos, weight):
+func faceplayer(_pos, weight):
 	var rot = Quaternion.from_euler(rotation)
 	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	var target_rot = Quaternion.from_euler(rotation)
