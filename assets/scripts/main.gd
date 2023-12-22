@@ -9,4 +9,23 @@ enum STATE {
 	CONSOLE,
 }
 var currentSTATE: STATE = STATE.PLAYING
+var currentSCENE: String = "Menu"
 
+
+
+var sceneMap = {
+	"Industry": "res://assets/maps/industry/industry.tscn",
+	"Industry_Apartment": "res://assets/maps/industry/industry_apartment.tscn",
+	"Plaza": "res://assets/maps/streets/streets.tscn",
+	"Menu": "res://assets/scenes/menus/menu.tscn"
+}
+
+func loadScene(scene: String, modifier: String = ""):
+	for sceneName in sceneMap.keys():
+		if sceneName == scene:
+			get_tree().change_scene_to_file(sceneMap[sceneName])
+			Main.currentSTATE = Main.STATE.PLAYING
+			Engine.time_scale = 1
+			currentSCENE = sceneName
+			print(currentSCENE)
+	pass

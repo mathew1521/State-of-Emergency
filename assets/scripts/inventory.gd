@@ -17,6 +17,8 @@ var defaultcolour: Color = Color(1,1,1)
 @onready var equipped = $"../../../head/eyes/maincam/equipped"
 @onready var slotsholder = $slots
 @export var startingItems: Array[AddItemData]
+@export var hasStartingItems: bool = false
+
 
 var itemEquipMap = {
 	"Pistol": "pistol",
@@ -29,9 +31,10 @@ func _ready():
 	slots[EQUIPPED_SLOT].visual_node.self_modulate = selectedcolour
 	self.visible = false
 	isopen = false
-	for i in startingItems:
-		AddItem(i.item, i.quantity)
-	pass
+	if hasStartingItems:
+		for i in startingItems:
+			AddItem(i.item, i.quantity)
+		pass
 
 func setEquippedSlot(slot: int):
 	var origSlot = EQUIPPED_SLOT

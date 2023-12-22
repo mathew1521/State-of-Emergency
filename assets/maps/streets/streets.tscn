@@ -171,7 +171,7 @@ albedo_texture = ExtResource("29_2apdr")
 uv1_scale = Vector3(25, 1.5, 1)
 texture_filter = 0
 
-[node name="streets" type="Node3D"]
+[node name="plaza" type="Node3D"]
 
 [node name="world" type="Node3D" parent="."]
 

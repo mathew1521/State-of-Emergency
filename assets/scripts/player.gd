@@ -60,7 +60,7 @@ var mouse_input: Vector2
 var direction = Vector3.ZERO
 var duckingdepth = -0.7
 var ismoving = false
-
+var seeing = null
 # get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -78,9 +78,21 @@ func _unhandled_input(event: InputEvent):
 func interact():
 	if interactray.is_colliding():
 		interactray.get_collider().interact(inventory)
-		
+
+func interactHOVER():
+		var collider = interactray.get_collider()
+		if collider != seeing:
+			if collider != null and "mouseHOVERED" in collider:
+				collider.mouseHOVERED = true
+			if seeing != null and "mouseHOVERED" in seeing:
+				seeing.mouseHOVERED = false
+			seeing = collider
 		
 func _input(event):
+	
+	if Input.is_action_pressed("quit"):
+		Main.loadScene("Menu")
+		
 	if Engine.time_scale == 0:
 		return
 	if !inventory:
@@ -93,9 +105,10 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mousesens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		mouse_input = event.relative
-		
 func _process(delta):
+
 	if Main.currentSTATE == Main.STATE.PLAYING:
+		interactHOVER()
 		cursor.position = get_viewport().size / 2.0
 		pass
 	else:
