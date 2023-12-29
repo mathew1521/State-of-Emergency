@@ -53,6 +53,9 @@ var bobbingintensity = 0.0
 @export var duckingspeed = 1.0
 @export var jump = 3.2
 @export var mousesens = 0.1
+@export var footsteps_sfx: Array[AudioStreamWAV]
+@onready var walking_streamplayer = $player_audio/walking
+var walksfx_index = -1
 
 var vmlerpspeed = 2.0
 var lerpspeed = 10.0
@@ -69,7 +72,7 @@ func _ready():
 	#defaultcursorpos = cursor.position
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _unhandled_input(event: InputEvent):
+func _unhandled_input(_event: InputEvent):
 	if Engine.time_scale == 0:
 		return
 	if Input.is_action_just_pressed("interact"):
@@ -77,17 +80,33 @@ func _unhandled_input(event: InputEvent):
 		
 func interact():
 	if interactray.is_colliding():
-		interactray.get_collider().interact(inventory)
+		if interactray.get_collider().has_method("interact"):
+			interactray.get_collider().interact(self)
 
 func interactHOVER():
 		var collider = interactray.get_collider()
+		if !interactray.is_colliding() || collider == null:
+			$hud/interact.hide()
 		if collider != seeing:
 			if collider != null and "mouseHOVERED" in collider:
+				$hud/interact.text = collider.interactPrompt
+				$hud/interact.show()
 				collider.mouseHOVERED = true
 			if seeing != null and "mouseHOVERED" in seeing:
+				$hud/interact.hide()
 				seeing.mouseHOVERED = false
 			seeing = collider
 		
+func interactPROMPT(text: String):
+	$hud/interact2.text = text
+	$hud/interact2.show()
+	if not $hud/interact2/timer.is_stopped():
+		$hud/interact2/timer.wait_time = 1
+	$hud/interact2/timer.start()
+	await $hud/interact2/timer.timeout
+	$hud/interact2.text = ""
+	$hud/interact2.hide()
+	
 func _input(event):
 	
 	if Input.is_action_pressed("quit"):
@@ -105,8 +124,8 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mousesens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		mouse_input = event.relative
-func _process(delta):
-
+		
+func _process(_delta):
 	if Main.currentSTATE == Main.STATE.PLAYING:
 		interactHOVER()
 		cursor.position = get_viewport().size / 2.0
@@ -197,9 +216,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, currentspeed)
 		velocity.z = move_toward(velocity.z, 0, currentspeed)
 	
+			
 	if velocity.length() > 1:
 		ismoving = true
 	else:
+		walking_streamplayer.stop()
 		ismoving = false
 	
 	if !ismoving:
@@ -215,6 +236,28 @@ func _physics_process(delta):
 			
 	move_and_slide()
 	equipped_sway(delta)
+	
+	if direction != Vector3() and is_on_floor():
+		if $player_audio/timer.time_left <= 0:
+			var current_walksfx_index = randi() % footsteps_sfx.size()
+			if current_walksfx_index == walksfx_index:
+				while current_walksfx_index == walksfx_index:
+					current_walksfx_index = randi() % footsteps_sfx.size()
+			walking_streamplayer.pitch_scale = randf_range(1.2, 1)
+			walking_streamplayer.stream = footsteps_sfx[current_walksfx_index]
+			walking_streamplayer.play()
+			walksfx_index = current_walksfx_index
+			match currentState:
+				STATE.WALKING:
+					$player_audio/timer.start(0.5)
+				STATE.RUNNING:
+					$player_audio/timer.start(0.35)
+				STATE.CROUCHING:
+					print("wtf")
+					$player_audio/timer.start(1)
+				STATE.IDLE:
+					walking_streamplayer.stop()
+		
 	
 func stamina_decrement():
 	stamina -= stamina_drainrate

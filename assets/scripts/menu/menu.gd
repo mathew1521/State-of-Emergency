@@ -3,6 +3,9 @@ extends Control
 @onready var buttonclick = $click
 @onready var mapmenu = $map_selection/mapmenu
 @onready var modifiermenu = $map_selection/modifiermenu
+@onready var resolutionmenu = $settings/resolutionmenu
+@onready var fullscreenmenu = $settings/fullscreenmenu
+
 func _ready():
 	Main.currentSTATE = Main.STATE.MENU
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
@@ -12,8 +15,26 @@ func _ready():
 	map_popup.id_pressed.connect(on_mapmenu_pressed)
 	var modifier_popup = modifiermenu.get_popup()
 	modifier_popup.id_pressed.connect(on_modifiermenu_pressed)
-	pass
+	
+	var fullscreen_popup = fullscreenmenu.get_popup()
+	fullscreen_popup.id_pressed.connect(_on_fullscreenmenu_pressed)
+	var resolution_popup = resolutionmenu.get_popup()
+	resolution_popup.id_pressed.connect(_on_resolutionmenu_pressed)
 
+
+	var fs_mode = get_window().get_mode()
+	match fs_mode:
+		0:
+			$settings/fullscreenmenu.text = "Windowed"
+		3:
+			$settings/fullscreenmenu.text = "Borderless Fullscreen"
+		4:
+			$settings/fullscreenmenu.text = "Fullscreen"
+	pass
+	
+	var res = get_window().size
+	$settings/resolutionmenu.text = str(res)
+	
 func _process(delta):
 	cursor.position = cursor.get_global_mouse_position()
 	pass
@@ -32,6 +53,10 @@ func _on_start_pressed():
 func _on_settings_pressed():
 	buttonclick.play()
 	await buttonclick.finished
+	$title.hide()
+	$version.hide()
+	$buttons.hide()
+	$settings.show()
 	pass
 
 
@@ -96,3 +121,58 @@ func random_map():
 			Main.loadScene("Industry")
 		1:
 			Main.loadScene("Plaza")
+
+
+
+func _on_settings_back_pressed():
+	buttonclick.play()
+	await buttonclick.finished
+	$settings.hide()
+	$title.show()
+	$version.show()
+	$buttons.show()
+	pass
+
+
+func _on_map_back_pressed():
+	buttonclick.play()
+	await buttonclick.finished
+	$map_selection.hide()
+	$title.show()
+	$version.show()
+	$buttons.show()
+	pass
+
+func _on_fullscreenmenu_pressed(index):
+	buttonclick.play()
+	await buttonclick.finished
+	var popup = fullscreenmenu.get_popup()
+	fullscreenmenu.text = fullscreenmenu.get_popup().get_item_text(index)
+	
+	match index:
+		0:
+			get_window().mode = 4
+			get_window().borderless = true
+		1:
+			get_window().mode = 3
+			get_window().borderless = false
+		2:
+			get_window().mode = 0
+			get_window().borderless = false
+			
+	
+
+
+func _on_resolutionmenu_pressed(index):
+	buttonclick.play()
+	await buttonclick.finished
+	var popup = resolutionmenu.get_popup()
+	resolutionmenu.text = resolutionmenu.get_popup().get_item_text(index)
+	
+	match index:
+		0:
+			get_window().size = Vector2(1920,1080)
+		1:
+			get_window().size = Vector2(1600,900)
+		2:
+			get_window().size = Vector2(1280,720)

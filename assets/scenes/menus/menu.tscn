@@ -56,7 +56,7 @@ anchor_right = 1.0
 offset_left = -149.0
 offset_bottom = 26.0
 grow_horizontal = 0
-text = "version number"
+text = "           0.0.4a"
 
 [node name="buttons" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -97,6 +97,7 @@ autoplay = true
 
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1lmr4")
+volume_db = -18.0
 
 [node name="cursor" type="CanvasLayer" parent="."]
 
@@ -220,6 +221,116 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
 
+[node name="back" type="Button" parent="map_selection"]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 4.0
+offset_right = 202.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="settings" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -280.0
+offset_right = 210.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="prompt" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -240.0
+offset_right = -32.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+
+[node name="prompt2" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -140.0
+offset_right = -36.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fullscreen"
+
+[node name="prompt3" type="Label" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -90.0
+offset_right = -36.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resolution"
+
+[node name="fullscreenmenu" type="MenuButton" parent="settings"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 139.0
+offset_right = 282.0
+offset_bottom = 170.0
+text = "<Random Map>"
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+
+[node name="resolutionmenu" type="MenuButton" parent="settings"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 189.0
+offset_right = 282.0
+offset_bottom = 220.0
+text = "<None>"
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="back" type="Button" parent="settings"]
+layout_mode = 2
+offset_left = 357.0
+offset_top = 38.0
+offset_right = 403.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
 [connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="buttons/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="buttons/credits" to="." method="_on_credits_pressed"]
@@ -227,3 +338,7 @@ text = "Start"
 [connection signal="pressed" from="map_selection/mapmenu" to="." method="_on_menus_pressed"]
 [connection signal="pressed" from="map_selection/modifiermenu" to="." method="_on_menus_pressed"]
 [connection signal="pressed" from="map_selection/start" to="." method="_on_realstart_pressed"]
+[connection signal="pressed" from="map_selection/back" to="." method="_on_map_back_pressed"]
+[connection signal="pressed" from="settings/fullscreenmenu" to="." method="_on_menus_pressed"]
+[connection signal="pressed" from="settings/resolutionmenu" to="." method="_on_menus_pressed"]
+[connection signal="pressed" from="settings/back" to="." method="_on_settings_back_pressed"]

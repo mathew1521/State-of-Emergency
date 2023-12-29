@@ -6,16 +6,29 @@ extends Node3D
 @onready var model = $model
 @onready var shader = $model.material_override.next_pass
 @export_enum("item_pickup", "interact_trigger", "teleport") var type: int
-@export var maxHighlight: float
+@export var maxHighlight: float = 0
 @export var sceneToTeleport: String
+@export var interactPrompt: String = "(F) to INTERACT"
+@export var sound: AudioStreamWAV
+@export var interactionText: String = ""
+
 var mouseHOVERED = false : set = changeMouseHOVERED
 signal pickup()
-func interact(inventory: Inventory):
+
+func interact(player: Node):
 	match type:
 		0:
-			item_pickup(inventory)
+			item_pickup(player.inventory)
 		1:
 			print("test")
+			if sound:
+				var soundPlayer = AudioStreamPlayer.new()
+				get_tree().get_root().add_child(soundPlayer)
+				soundPlayer.stream = sound
+				soundPlayer.play()
+				player.interactPROMPT(interactionText)
+				await soundPlayer.finished
+				soundPlayer.queue_free()
 		2:
 			Main.loadScene(sceneToTeleport)
 
@@ -31,6 +44,8 @@ func interact_trigger():
 func changeMouseHOVERED(value: bool):
 	mouseHOVERED = value
 	var tween = get_tree().create_tween()
+	if !shader:
+		return
 	if mouseHOVERED:
 		tween.tween_method(changeShaderValue, 0.0, maxHighlight, 0.12)
 	else:

@@ -4,6 +4,7 @@ extends Node
 
 @export var health: int
 @export var maximumhealth: int
+var dead = false
 signal healthtaken
 
 func damage(damageval):
@@ -16,8 +17,9 @@ func heal(healval):
 	pass
 
 func die():
-	var entity = self.get_parent()
-	entity.queue_free()
+	var _entity = self.get_parent()
+	dead = true
+	#entity.queue_free()
 	pass
 	
 func _process(_delta):

@@ -22,4 +22,7 @@ func _ready():
 		get_tree_root().get_node("Swipe").set_animation("zombieanimations/Claw2")
 		pass
 		
-	#self.active = true # The animation tree is only activated after the entity's animations are assigned.
+	self.active = true # The animation tree is only activated after the entity's animations are assigned.
+
+
+	# Replace with match statement once additional animation sets are added (in 5 million years)w

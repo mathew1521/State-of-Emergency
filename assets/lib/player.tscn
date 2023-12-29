@@ -1,13 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://c31s2badjsnua"]
+[gd_scene load_steps=27 format=3 uid="uid://c31s2badjsnua"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_dqjj7"]
 [ext_resource type="Script" path="res://assets/scripts/camshake.gd" id="2_c58xp"]
+[ext_resource type="AudioStream" uid="uid://4ke6sa02l3do" path="res://assets/sounds/footsteps/player/walk1.wav" id="2_d4538"]
 [ext_resource type="PackedScene" uid="uid://8a5etv1vqw6s" path="res://assets/lib/inventory.tscn" id="3_0tf20"]
+[ext_resource type="AudioStream" uid="uid://lqnbcrlcfoea" path="res://assets/sounds/footsteps/player/walk2.wav" id="3_jr8qs"]
 [ext_resource type="Resource" uid="uid://ds7oiu37ynqb3" path="res://assets/items/machete/machete.tres" id="4_hmh2v"]
 [ext_resource type="Resource" uid="uid://scuon6ox1yn5" path="res://assets/items/pistol/pistol.tres" id="4_moe28"]
+[ext_resource type="AudioStream" uid="uid://d361it4fmkmds" path="res://assets/sounds/footsteps/player/walk3.wav" id="4_yk285"]
 [ext_resource type="Script" path="res://assets/scripts/additemdata.gd" id="5_7pwcv"]
+[ext_resource type="AudioStream" uid="uid://dhf2b5fsv7inu" path="res://assets/sounds/footsteps/player/walk4.wav" id="5_rfjj5"]
+[ext_resource type="AudioStream" uid="uid://dnxqtb1fgd52q" path="res://assets/sounds/footsteps/player/walk5.wav" id="6_q0st5"]
+[ext_resource type="AudioStream" uid="uid://btrab4kisnxh4" path="res://assets/sounds/footsteps/player/walk6.wav" id="7_ksiti"]
 [ext_resource type="Resource" uid="uid://drr3oo2k20f1r" path="res://assets/items/shotgun/shotgun.tres" id="7_sm5fi"]
+[ext_resource type="AudioStream" uid="uid://cclhmuwc6vvxu" path="res://assets/sounds/footsteps/player/walk7.wav" id="8_n70sh"]
+[ext_resource type="AudioStream" uid="uid://bfpqxgluugvbi" path="res://assets/sounds/footsteps/player/walk8.wav" id="9_ddn4d"]
 [ext_resource type="PackedScene" uid="uid://dgdqkkjpnrpbm" path="res://assets/lib/console.tscn" id="10_74xdo"]
+[ext_resource type="Theme" uid="uid://tt2v855gbq7q" path="res://assets/themes/soe_generic.tres" id="11_ee72b"]
 [ext_resource type="Texture2D" uid="uid://cxs3r63cfoj6w" path="res://assets/textures/cursor.png" id="11_sfn26"]
 [ext_resource type="Shader" path="res://assets/shaders/negativecursor.gdshader" id="11_ydyub"]
 
@@ -42,6 +51,7 @@ collision_layer = 2
 script = ExtResource("1_dqjj7")
 stamina_chargetime = 3
 stamina_drainrate = 0.24
+footsteps_sfx = Array[AudioStreamWAV]([ExtResource("2_d4538"), ExtResource("3_jr8qs"), ExtResource("4_yk285"), ExtResource("5_rfjj5"), ExtResource("6_q0st5"), ExtResource("7_ksiti"), ExtResource("8_n70sh"), ExtResource("9_ddn4d")])
 
 [node name="standcollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ui8lw")
@@ -121,3 +131,47 @@ material = SubResource("ShaderMaterial_wo2cj")
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("11_sfn26")
+
+[node name="interact" type="Label" parent="hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = 124.365
+offset_right = 21.5
+offset_bottom = 150.365
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_ee72b")
+text = "F to INTERACT"
+
+[node name="interact2" type="Label" parent="hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.5
+offset_top = 189.045
+offset_right = 54.5
+offset_bottom = 216.045
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_ee72b")
+text = "Seems to be locked."
+
+[node name="timer" type="Timer" parent="hud/interact2"]
+one_shot = true
+
+[node name="player_audio" type="Node3D" parent="."]
+
+[node name="walking" type="AudioStreamPlayer3D" parent="player_audio"]
+
+[node name="timer" type="Timer" parent="player_audio"]
+one_shot = true

@@ -18,16 +18,26 @@ var defaultcolour: Color = Color(1,1,1)
 @onready var slotsholder = $slots
 @export var startingItems: Array[AddItemData]
 @export var hasStartingItems: bool = false
-
+var currentItems: Array[AddItemData]
 
 var itemEquipMap = {
 	"Pistol": "pistol",
 	"Shotgun": "shotgun",
 }
 	
-	
+func updateInventory():
+	currentItems.clear()
+	for slot in slots:
+		if slot.item != null:
+			var itemNew = AddItemData.new()
+			itemNew.item = slot.item
+			itemNew.quantity = slot.quantity
+			currentItems.append(itemNew)
+	Main.currentInventory = currentItems
+			
 func _ready():
 	slots = slotsholder.get_children()
+	EQUIPPED_SLOT = Main.currentSlot
 	slots[EQUIPPED_SLOT].visual_node.self_modulate = selectedcolour
 	self.visible = false
 	isopen = false
@@ -35,6 +45,12 @@ func _ready():
 		for i in startingItems:
 			AddItem(i.item, i.quantity)
 		pass
+		
+	currentItems = Main.currentInventory
+	
+	if currentItems:
+		for i in currentItems:
+			AddItem(i.item, i.quantity)
 
 func setEquippedSlot(slot: int):
 	var origSlot = EQUIPPED_SLOT
@@ -42,6 +58,7 @@ func setEquippedSlot(slot: int):
 	if isAnimating: return
 	if player.currentState == player.STATE.RUNNING: return
 	EQUIPPED_SLOT = slot
+	Main.currentSlot = EQUIPPED_SLOT
 	setItemName()
 	handleEquip(origSlot, origItem)
 	
@@ -101,7 +118,7 @@ func setItemName(clear = false):
 #				if nodeToEquip.animplayer.is_playing(): await nodeToEquip.animplayer.animation_finished
 #				nodeToEquip.isEquipped = false
 
-func handleEquip(origSlot = null, origItem: Item = null):
+func handleEquip(origSlot = null, _origItem: Item = null):
 	if Main.currentSTATE == Main.STATE.INVENTORY:
 		await inventory_closed
 	var origiItem = equipped.get_children()
@@ -114,6 +131,7 @@ func handleEquip(origSlot = null, origItem: Item = null):
 				if child.item == currentItem: return
 				if child.animplayer.is_playing():
 					EQUIPPED_SLOT = origSlot
+					Main.currentSlot = EQUIPPED_SLOT
 					setItemName()
 					return
 				child.unequip()
@@ -144,6 +162,7 @@ func handleEquip(origSlot = null, origItem: Item = null):
 		for child in origiItem:
 			if child.animplayer.is_playing():
 				EQUIPPED_SLOT = origSlot
+				Main.currentSlot = EQUIPPED_SLOT
 				setItemName()
 				return
 			child.unequip()
@@ -154,9 +173,9 @@ func handleEquip(origSlot = null, origItem: Item = null):
 				
 func _input(_event):
 	if _event is InputEventKey and (_event.keycode >= KEY_1 && _event.keycode <= KEY_8) and not _event.echo and _event.is_pressed() and Main.currentSTATE == Main.STATE.PLAYING:
-		slots[EQUIPPED_SLOT].visual_node.self_modulate = Color(1,1,1)
+		slots[EQUIPPED_SLOT].visual_node.self_modulate = defaultcolour
 		setEquippedSlot(int(_event.keycode) - 49)
-		slots[EQUIPPED_SLOT].visual_node.self_modulate = Color(0,1,0)
+		slots[EQUIPPED_SLOT].visual_node.self_modulate = selectedcolour
 	if Input.is_action_just_pressed("inventory"):
 		if Main.currentSTATE == Main.STATE.INVENTORY:
 			close()
@@ -184,8 +203,8 @@ func open():
 	Engine.time_scale = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	emit_signal("inventory_opened")
-func AddItem(item: Item, amount: int = 1):
-	item = item.duplicate()
+func AddItem(_item: Item, amount: int = 1):
+	_item = _item.duplicate()
 	if HasSpaceForItem():
 		for i in slots.size():
 			var slot = slots[i]
@@ -202,37 +221,38 @@ func AddItem(item: Item, amount: int = 1):
 						slot.quantity = item.stacksize
 						slot.RefreshCount()
 						amount -= spaceLeftInStack
+					updateInventory()
 
 		while amount > 0:
 			for i in slots.size():
 				var slot = slots[i]
 				if (slot.item == null):
-					SpawnNewItem(item, slot, min(amount, item.stacksize))
+					SpawnNewItem(_item, slot, min(amount, _item.stacksize))
+					updateInventory()
 					if slot.get_index() == EQUIPPED_SLOT:
 						setEquippedSlot(EQUIPPED_SLOT)
-					amount -= min(amount, item.stacksize)
+					amount -= min(amount, _item.stacksize)
 					if amount <= 0:
 						return true
-	
 		return false
 	else:
 		pass
 
-func SpawnNewItem(item: Item, slot: Slot, amount: int = 1):
-	slot.InitialiseItem(item, amount)
+func SpawnNewItem(_item: Item, slot: Slot, amount: int = 1):
+	slot.InitialiseItem(_item, amount)
 	
 func GetSelectedItem(use: bool = false):
 	var itemInSlot = slots[EQUIPPED_SLOT]
 	if itemInSlot:
-		var item = itemInSlot.item
+		var _item = itemInSlot.item
 		if (use):
 			itemInSlot.quantity = itemInSlot.quantity-1
 			if (itemInSlot.quantity <= 0):
 				itemInSlot.ClearItem()
 			else:
 				itemInSlot.RefreshCount()
-		if item:
-			return item
+		if _item:
+			return _item
 	pass
 	
 
@@ -247,25 +267,25 @@ func GetTotalItemQuantity(targetItem: Item):
 func HasItem(targetItem: Item):
 	for i in slots.size():
 		var slot = slots[i]
-		var item = slot.item
-		if (item != null && item == targetItem):
+		var _item = slot.item
+		if (_item != null && _item == targetItem):
 			return true
 	return false
 	
 func HasSpaceForItem():
 	for i in slots.size():
 		var slot = slots[i]
-		var item = slot.item
-		if (item == null):
+		var _item = slot.item
+		if (_item == null):
 			return true
 	
-func DeductItems(targetItem: Item, amount: int, total: int):
+func DeductItems(targetItem: Item, amount: int, _total: int):
 	var remainingAmount: int = amount
-	var stacks: Array[Slot]
+	var stacks: Array[Slot] = []
 	for i in slots.size():
 		var slot = slots[i]
-		var item = slot.item
-		if (item != null && item.name == targetItem.name):
+		var _item = slot.item
+		if (_item != null && _item.name == targetItem.name):
 			stacks.append(slot)
 		
 	stacks.sort_custom(CompareCounts)

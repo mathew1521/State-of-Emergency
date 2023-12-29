@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxs3r63cfoj6w"
-path.s3tc="res://.godot/imported/cursor.png-f271a127bae41ae766f1b1b7bc6152fd.s3tc.ctex"
+uid="uid://m24cvefidtwn"
+path.s3tc="res://.godot/imported/windowlight_big_5.png-f4933530661ade2da347d9f94bd6f382.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-f271a127bae41ae766f1b1b7bc6152fd.s3tc.ctex"]
+source_file="res://assets/textures/maps/shared/windowlight_big_5.png"
+dest_files=["res://.godot/imported/windowlight_big_5.png-f4933530661ade2da347d9f94bd6f382.s3tc.ctex"]
 
 [params]
 

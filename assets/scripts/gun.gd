@@ -179,7 +179,6 @@ func _shoot():
 			if not timer.is_stopped():
 				return
 			timer.start()
-			var cameracol = getcameracol(item.effectiverange)
 			if animplayer.is_playing():
 				pass
 			else:
@@ -355,7 +354,7 @@ func shotgun_hitscan(colpoint):
 		var spreadDirection2 = spreadDirection.rotated(Vector3.UP, randf_range(-item.spread, item.spread))
 		var newintersection = PhysicsRayQueryParameters3D.create(bulletpoint.get_global_transform().origin, colpoint + spreadDirection * 2 + spreadDirection2)
 		var bulletcol = get_world_3d().direct_space_state.intersect_ray(newintersection)
-		print(bulletcol)
+	#	print(bulletcol)
 
 		if bulletcol:
 			damage(bulletcol.collider)
@@ -363,13 +362,14 @@ func shotgun_hitscan(colpoint):
 		
 
 func damage(Collider):
-	if Collider.is_in_group("zombie"):
+	if Collider.is_in_group("vulnerable"):
 		print(Collider.get_parent().get_parent().get_parent().get_parent().name)
 		var tryhealth = Collider.get_parent().get_parent().get_parent().get_parent().get_node("health")
 		if tryhealth:
 			if item.type == 0:
-				tryhealth.shove(global_transform.origin.direction_to(Collider))
-				print("yeah im cool with that")
+				pass
+				#tryhealth.shove(global_transform.origin.direction_to(Collider))
+				#print("yeah im cool with that")
 			if "damage" in item:
 				tryhealth.damage(item.damage/10)
 			else:
@@ -378,6 +378,6 @@ func damage(Collider):
 		
 
 func _on_static_body_3d_body_entered(body):
-	if body.is_in_group("zombie"):
+	if body.is_in_group("vulnerable"):
 		damage(body)
 	pass # Replace with function body.

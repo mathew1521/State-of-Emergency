@@ -460,7 +460,6 @@ maxHighlight = 0.01
 sceneToTeleport = "Industry_Apartment"
 interactPrompt = "(F) to OPEN"
 sound = ExtResource("6_n72f6")
-interactionText = "It won't budge."
 
 [node name="model" type="CSGBox3D" parent="world/stage/folder2/test36"]
 transform = Transform3D(1, 0, -7.10543e-15, -6.66134e-16, 1, -2.64698e-23, 0, 0, 1, 0, 0, 0)
@@ -1722,7 +1721,7 @@ transform = Transform3D(-0.798904, -4.57535e-09, 5.2336e-05, 0, 1, 8.74228e-11, 
 material_override = SubResource("StandardMaterial3D_68gb5")
 
 [node name="spawner" type="Node3D" parent="world/stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 3.5, 8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 4, 30)
 script = ExtResource("53_3kx42")
 objectToSpawn = ExtResource("54_yqnv4")
 
@@ -1742,7 +1741,7 @@ volume_db = -23.327
 autoplay = true
 
 [node name="player" parent="." instance=ExtResource("27_5pg5c")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.5, 3, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 3, 0)
 
 [node name="standcollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5.77683, -5.5)
@@ -2094,7 +2093,7 @@ transform = Transform3D(-2.70836e-08, -1, 2.45278e-08, 0.173648, -2.88582e-08, -
 size = Vector3(1, 0.185, 1)
 texture_albedo = ExtResource("37_p0t17")
 
-[node name="pistol" type="RigidBody3D" parent="."]
+[node name="uspp" type="RigidBody3D" parent="."]
 transform = Transform3D(4.37114e-08, -1, 3.82137e-15, -1, -4.37114e-08, -8.74228e-08, 8.74228e-08, 0, -1, 0, -0.450775, 0)
 collision_layer = 4
 script = ExtResource("38_loupe")
@@ -2102,14 +2101,15 @@ items = Array[ExtResource("40_kwh18")]([SubResource("Resource_14umj"), SubResour
 maxHighlight = 0.5
 interactPrompt = "(F) to PICK UP"
 
-[node name="model" type="MeshInstance3D" parent="pistol"]
+[node name="model" type="MeshInstance3D" parent="uspp"]
 transform = Transform3D(0.055, -1.73555e-29, 0, 1.22182e-29, 0.055, 3.22931e-23, 0, 2.11758e-22, 0.055, -3.5, 70.4176, -5.5)
 layers = 1048575
 material_override = SubResource("StandardMaterial3D_1i1vi")
+cast_shadow = 0
 mesh = ExtResource("43_ih543")
 skeleton = NodePath("../../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pistol"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="uspp"]
 transform = Transform3D(0.055, -1.15703e-30, 0, 0, 0.055, 2.64698e-23, 0, 2.64698e-23, 0.055, -3.5, 70.4176, -5.5)
 shape = SubResource("ConvexPolygonShape3D_iogmm")
 

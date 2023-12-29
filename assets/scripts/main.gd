@@ -11,8 +11,8 @@ enum STATE {
 var currentSTATE: STATE = STATE.PLAYING
 var currentSCENE: String = "Menu"
 
-
-
+var currentInventory: Array[AddItemData] = []
+var currentSlot: int = 0
 var sceneMap = {
 	"Industry": "res://assets/maps/industry/industry.tscn",
 	"Industry_Apartment": "res://assets/maps/industry/industry_apartment.tscn",
@@ -27,5 +27,5 @@ func loadScene(scene: String, modifier: String = ""):
 			Main.currentSTATE = Main.STATE.PLAYING
 			Engine.time_scale = 1
 			currentSCENE = sceneName
-			print(currentSCENE)
+			print(currentSCENE + " on difficulty " + modifier)
 	pass
