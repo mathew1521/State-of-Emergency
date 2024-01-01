@@ -464,7 +464,7 @@ mesh = ExtResource("3_515sk")
 skeleton = NodePath("../../../../../../..")
 
 [node name="muzzleflash" type="MeshInstance3D" parent="model"]
-transform = Transform3D(-1.99513, -0.209269, 7.60554e-06, -0.139513, 2.99269, 5.30459e-07, -5.08268e-06, -1.36846e-09, -3, 0.0398688, 2.75451, 5.46801)
+transform = Transform3D(-1.99513, -0.209269, 7.60554e-06, -0.139513, 2.99269, 5.30458e-07, -5.08268e-06, -1.3694e-09, -3, 0.0398688, 2.75451, 5.46801)
 visible = false
 material_override = SubResource("ShaderMaterial_eqew7")
 mesh = ExtResource("5_11oet")

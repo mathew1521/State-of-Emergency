@@ -19,6 +19,14 @@ func interact(player: Node):
 	match type:
 		0:
 			item_pickup(player.inventory)
+			if sound:
+				var soundPlayer = AudioStreamPlayer.new()
+				get_tree().get_root().add_child(soundPlayer)
+				soundPlayer.stream = sound
+				soundPlayer.play()
+				player.interactPROMPT(interactionText)
+				await soundPlayer.finished
+				soundPlayer.queue_free()
 		1:
 			print("test")
 			if sound:

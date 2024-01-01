@@ -12,6 +12,7 @@ extends Node3D
 @onready var model = $model
 @onready var inventory = $"../../../../../hud/inventorylayer/inventory"
 @onready var camera_shake = $"../.."
+@onready var recoil = $"../../recoil"
 @onready var player = $"../../../../.."
 var canreload: bool = false
 var isEquipped: bool = false
@@ -218,7 +219,8 @@ func _shoot():
 			if animplayer.is_playing():
 				pass
 			else:
-				camera_shake.add_trauma(item.recoil)
+				recoil.apply_recoil()
+				#camera_shake.add_trauma(item.recoil)
 				animplayer.play("shoot")
 				isshooting = true
 				playingAnim = true

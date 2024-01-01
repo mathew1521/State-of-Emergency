@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://tt2v855gbq7q"]
 
-[ext_resource type="FontFile" uid="uid://b47mjgpi5b467" path="res://assets/fonts/jupiteroid_reg.ttf" id="1_qs1av"]
+[ext_resource type="FontFile" uid="uid://c0h5h76qvpce6" path="res://assets/fonts/deltablock_reg.ttf" id="1_ueyhf"]
 
 [resource]
-default_font = ExtResource("1_qs1av")
-default_font_size = 20
+default_font = ExtResource("1_ueyhf")
+default_font_size = 18

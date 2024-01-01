@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c31s2badjsnua"]
+[gd_scene load_steps=29 format=3 uid="uid://c31s2badjsnua"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_dqjj7"]
 [ext_resource type="Script" path="res://assets/scripts/camshake.gd" id="2_c58xp"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dgdqkkjpnrpbm" path="res://assets/lib/console.tscn" id="10_74xdo"]
 [ext_resource type="Theme" uid="uid://tt2v855gbq7q" path="res://assets/themes/soe_generic.tres" id="11_ee72b"]
 [ext_resource type="Texture2D" uid="uid://cxs3r63cfoj6w" path="res://assets/textures/cursor.png" id="11_sfn26"]
+[ext_resource type="Script" path="res://assets/scripts/recoil.gd" id="11_t0jsw"]
 [ext_resource type="Shader" path="res://assets/shaders/negativecursor.gdshader" id="11_ydyub"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ui8lw"]
@@ -26,6 +27,11 @@
 height = 1.4
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4tgis"]
+
+[sub_resource type="Curve" id="Curve_ohaty"]
+min_value = -1.0
+_data = [Vector2(0.0215054, 0.768421), 0.0, 0.0, 0, 0, Vector2(0.215054, -0.11579), 0.0, 0.0, 0, 0, Vector2(0.344086, 0.389474), 0.0, 0.0, 0, 0, Vector2(0.478495, 0.157895), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Resource" id="Resource_f4uqc"]
 script = ExtResource("5_7pwcv")
@@ -83,6 +89,17 @@ target_position = Vector3(0, 0, -2)
 collision_mask = 5
 
 [node name="equipped" type="Node3D" parent="head/eyes/maincam"]
+
+[node name="recoil" type="Node3D" parent="head/eyes/maincam" node_paths=PackedStringArray("target_object", "camera_shake")]
+script = ExtResource("11_t0jsw")
+target_object = NodePath("..")
+recoil_rotation_x = SubResource("Curve_ohaty")
+recoil_rotation_z = SubResource("Curve_ohaty")
+recoil_position_z = SubResource("Curve_ohaty")
+recoil_amplitude = Vector3(1, 0.35, 1)
+lerp_speed = 0.5
+recoil_speed = 3.0
+camera_shake = NodePath("..")
 
 [node name="groundcolraycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

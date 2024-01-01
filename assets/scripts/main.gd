@@ -17,7 +17,8 @@ var sceneMap = {
 	"Industry": "res://assets/maps/industry/industry.tscn",
 	"Industry_Apartment": "res://assets/maps/industry/industry_apartment.tscn",
 	"Plaza": "res://assets/maps/streets/streets.tscn",
-	"Menu": "res://assets/scenes/menus/menu.tscn"
+	"Menu": "res://assets/scenes/menus/menu.tscn",
+	"ZombieLab": "res://sub_viewport.tscn"
 }
 
 func loadScene(scene: String, modifier: String = ""):

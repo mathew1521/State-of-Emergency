@@ -43,7 +43,8 @@ func _process(delta):
 func _on_start_pressed():
 	buttonclick.play()
 	await buttonclick.finished
-	$title.hide()
+	$logo.hide()
+	#$title.hide()
 	$version.hide()
 	$buttons.hide()
 	$map_selection.show()
@@ -53,7 +54,8 @@ func _on_start_pressed():
 func _on_settings_pressed():
 	buttonclick.play()
 	await buttonclick.finished
-	$title.hide()
+	#$title.hide()
+	$logo.hide()
 	$version.hide()
 	$buttons.hide()
 	$settings.show()
@@ -128,7 +130,8 @@ func _on_settings_back_pressed():
 	buttonclick.play()
 	await buttonclick.finished
 	$settings.hide()
-	$title.show()
+	$logo.show()
+	#$title.show()
 	$version.show()
 	$buttons.show()
 	pass
@@ -138,7 +141,8 @@ func _on_map_back_pressed():
 	buttonclick.play()
 	await buttonclick.finished
 	$map_selection.hide()
-	$title.show()
+	$logo.show()
+	#$title.show()
 	$version.show()
 	$buttons.show()
 	pass
@@ -176,3 +180,8 @@ func _on_resolutionmenu_pressed(index):
 			get_window().size = Vector2(1600,900)
 		2:
 			get_window().size = Vector2(1280,720)
+
+
+func _on_zombielab_pressed():
+	Main.loadScene("ZombieLab")
+	pass

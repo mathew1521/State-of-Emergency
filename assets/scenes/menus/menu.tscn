@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxbar47b1ehnb"]
+[gd_scene load_steps=12 format=3 uid="uid://bxbar47b1ehnb"]
 
 [ext_resource type="Texture2D" uid="uid://d1q5oc6oacm6p" path="res://assets/menubg.png" id="1_0tcmi"]
 [ext_resource type="Script" path="res://assets/scripts/menu/menu.gd" id="1_3il75"]
+[ext_resource type="Texture2D" uid="uid://b0ysr122swft2" path="res://assets/textures/background2.png" id="2_lrue0"]
+[ext_resource type="Script" path="res://assets/scenes/menus/background_fade.gd" id="3_1cn51"]
+[ext_resource type="Theme" uid="uid://tt2v855gbq7q" path="res://assets/themes/soe_generic.tres" id="3_2vim8"]
 [ext_resource type="AudioStream" uid="uid://cwbuuuj3w3hwc" path="res://assets/sounds/music/callofthevoid.wav" id="3_f4xqo"]
 [ext_resource type="AudioStream" uid="uid://ehmaqos7t3h0" path="res://assets/sounds/click.wav" id="4_1lmr4"]
 [ext_resource type="Shader" path="res://assets/shaders/negativecursor.gdshader" id="5_k0vh1"]
 [ext_resource type="Texture2D" uid="uid://cxs3r63cfoj6w" path="res://assets/textures/cursor.png" id="6_a362q"]
+[ext_resource type="Texture2D" uid="uid://dg3616gymwrs7" path="res://assets/textures/logo.png" id="7_j18y7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_usew1"]
 shader = ExtResource("5_k0vh1")
@@ -25,15 +29,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -195.5
-offset_top = -44.0
-offset_right = 195.5
-offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0tcmi")
+script = ExtResource("3_1cn51")
+textures = Array[Texture2D]([ExtResource("1_0tcmi"), ExtResource("2_lrue0")])
+
+[node name="background2" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="title" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,10 +67,22 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -149.0
-offset_bottom = 26.0
+offset_left = -876.0
+offset_top = 401.0
+offset_right = -727.0
+offset_bottom = 427.0
 grow_horizontal = 0
+theme = ExtResource("3_2vim8")
 text = "           0.0.4a"
+
+[node name="zombielab" type="Button" parent="."]
+layout_mode = 2
+offset_left = 810.0
+offset_top = 650.0
+offset_right = 1110.0
+offset_bottom = 681.0
+theme = ExtResource("3_2vim8")
+text = "Z Lab"
 
 [node name="buttons" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -72,6 +98,7 @@ offset_right = 150.0
 offset_bottom = 63.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_2vim8")
 theme_override_constants/separation = 1
 
 [node name="start" type="Button" parent="buttons"]
@@ -131,6 +158,7 @@ offset_right = 105.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_2vim8")
 
 [node name="prompt" type="Label" parent="map_selection"]
 layout_mode = 1
@@ -245,6 +273,7 @@ offset_right = 210.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_2vim8")
 
 [node name="prompt" type="Label" parent="settings"]
 layout_mode = 1
@@ -331,6 +360,22 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Back"
 
+[node name="logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -294.86
+offset_right = 256.0
+offset_bottom = -140.86
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_j18y7")
+
+[connection signal="pressed" from="zombielab" to="." method="_on_zombielab_pressed"]
 [connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="buttons/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="buttons/credits" to="." method="_on_credits_pressed"]
