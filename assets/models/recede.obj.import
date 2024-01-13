@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqqmvgh852mdd"
+path="res://.godot/imported/recede.obj-0b059673ad35d8fdade496e0a8859e46.mesh"
+
+[deps]
+
+files=["res://.godot/imported/recede.obj-0b059673ad35d8fdade496e0a8859e46.mesh"]
+
+source_file="res://assets/models/recede.obj"
+dest_files=["res://.godot/imported/recede.obj-0b059673ad35d8fdade496e0a8859e46.mesh", "res://.godot/imported/recede.obj-0b059673ad35d8fdade496e0a8859e46.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

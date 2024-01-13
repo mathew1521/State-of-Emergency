@@ -3,14 +3,15 @@ extends Node3D
 
 	
 @export var items: Array[AddItemData]
-@onready var model = $model
-@onready var shader = $model.material_override.next_pass
-@export_enum("item_pickup", "interact_trigger", "teleport") var type: int
+@export var model: Node3D
+@onready var shader = model.material_override.next_pass
+@export_enum("item_pickup", "interact_trigger", "teleport", "trigger_finale", "door") var type: int
 @export var maxHighlight: float = 0
 @export var sceneToTeleport: String
 @export var interactPrompt: String = "(F) to INTERACT"
 @export var sound: AudioStreamWAV
 @export var interactionText: String = ""
+var closed: bool = true
 
 var mouseHOVERED = false : set = changeMouseHOVERED
 signal pickup()
@@ -39,7 +40,17 @@ func interact(player: Node):
 				soundPlayer.queue_free()
 		2:
 			Main.loadScene(sceneToTeleport)
-
+		3:
+			pass
+		4:
+			var animplayer = self.get_parent().find_child("AnimationPlayer")
+			if animplayer.is_playing(): return
+			if closed:
+				animplayer.play("open")
+				closed = false
+			else:
+				animplayer.play("close")
+				closed = true
 func item_pickup(inventory: Inventory):
 	for i in items:
 		inventory.AddItem(i.item, i.quantity)

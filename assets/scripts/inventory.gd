@@ -37,7 +37,7 @@ func updateInventory():
 			
 func _ready():
 	slots = slotsholder.get_children()
-	EQUIPPED_SLOT = Main.currentSlot
+	#EQUIPPED_SLOT = Main.currentSlot
 	slots[EQUIPPED_SLOT].visual_node.self_modulate = selectedcolour
 	self.visible = false
 	isopen = false
@@ -49,8 +49,9 @@ func _ready():
 	currentItems = Main.currentInventory
 	
 	if currentItems:
-		for i in currentItems:
-			AddItem(i.item, i.quantity)
+		pass
+#		for i in currentItems:
+#			AddItem(i.item, i.quantity)
 
 func setEquippedSlot(slot: int):
 	var origSlot = EQUIPPED_SLOT

@@ -57,6 +57,8 @@ collision_layer = 2
 script = ExtResource("1_dqjj7")
 stamina_chargetime = 3
 stamina_drainrate = 0.24
+walkspeed = 2
+runspeed = 5
 footsteps_sfx = Array[AudioStreamWAV]([ExtResource("2_d4538"), ExtResource("3_jr8qs"), ExtResource("4_yk285"), ExtResource("5_rfjj5"), ExtResource("6_q0st5"), ExtResource("7_ksiti"), ExtResource("8_n70sh"), ExtResource("9_ddn4d")])
 
 [node name="standcollider" type="CollisionShape3D" parent="."]
@@ -100,6 +102,9 @@ recoil_amplitude = Vector3(1, 0.35, 1)
 lerp_speed = 0.5
 recoil_speed = 3.0
 camera_shake = NodePath("..")
+
+[node name="flashlight" type="SpotLight3D" parent="head/eyes"]
+visible = false
 
 [node name="groundcolraycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

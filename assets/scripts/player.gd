@@ -56,7 +56,8 @@ var bobbingintensity = 0.0
 @export var footsteps_sfx: Array[AudioStreamWAV]
 @onready var walking_streamplayer = $player_audio/walking
 var walksfx_index = -1
-
+var flashlight: bool = false
+@onready var flashlight_node = $head/eyes/flashlight
 var vmlerpspeed = 2.0
 var lerpspeed = 10.0
 var mouse_input: Vector2
@@ -141,7 +142,13 @@ func _physics_process(delta):
 		return
 #	if !Main.currentSTATE == Main.STATE.PLAYING:
 #		return
-		
+	if Input.is_action_just_pressed("flashlight"):
+		if flashlight:
+			flashlight = false
+			flashlight_node.visible = false
+		else:
+			flashlight = true
+			flashlight_node.visible = true
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	if Input.is_action_pressed("duck"): # detect crouching (CTRL)
 		currentspeed = duckingspeed
@@ -287,6 +294,8 @@ func equipped_sway(delta):
 	var rotationX = Basis().rotated(Vector3(1,0,0).normalized(), -mouseY)
 	var targetRotation = rotationX * rotationY
 	equipped.basis = equipped.basis.orthonormalized().slerp(targetRotation, 5 * delta)
-
 func hit():
 	health = health - 10
+	print(health)
+	eyes.position.y = lerp(eyes.position.y,-0.7,get_physics_process_delta_time()*lerpspeed)
+	eyes.position.x = lerp(eyes.position.x,-0.15,get_physics_process_delta_time()*lerpspeed)

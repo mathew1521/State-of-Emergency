@@ -10,6 +10,7 @@ func _ready():
 	objectInit.position = self.position
 	print(objectInit.name + str(objectInit.position))
 	stage.add_child.call_deferred(objectInit)
+	$preview.queue_free()
 	pass
 
 func _process(_delta):

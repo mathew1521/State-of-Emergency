@@ -18,7 +18,12 @@ var deadcheck = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#print(SPEED)
+	if Main.gameModifier != null || "":
+		match Main.gameModifier:
+			"28 Days Later":
+				SPEED = SPEED*3
+			"PTSD":
+				SPEED = SPEED*1.5
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 	#anim_tree.active = true
@@ -28,7 +33,8 @@ func _ready():
 func _process(_delta):
 	if Engine.time_scale == 0:
 		return
-	
+		
+	velocity = Vector3.ZERO
 #	if attacking:
 #		return
 		
@@ -46,25 +52,27 @@ func _process(_delta):
 	
 	if health.dead == true:
 		if deadcheck == true:
+			if state_machine.get_current_node() == "Swipe":
+				anim_player.play("zombieanimations/Die")
 			return
 		else:
 			await get_tree().create_timer(0.6).timeout
 			disable_collisions(self)
 			deadcheck = true
 		
-	velocity = Vector3.ZERO
-	
-
 	
 	match state_machine.get_current_node():
 		"Walk":
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+			nav_agent.set_velocity((next_nav_point - global_transform.origin).normalized() * SPEED)
 #			look_at(Vector3(global_position.x + velocity.x, global_position.y, player.global_position.z + velocity.z), Vector3.UP)
 			faceplayer(player.global_position, 0.2)
 			#look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		"Swipe":
+			if health.dead:
+				anim_player.stop()
+				return
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
 	anim_tree.set("parameters/conditions/idle", !playerspotted)
@@ -75,8 +83,7 @@ func _process(_delta):
 	anim_tree.get("parameters/playback")
 	
 	alert_others()
-	
-	move_and_slide()
+	#move_and_slide()
 	
 #	await get_tree().create_timer(5).timeout
 #	isactive = false
@@ -137,3 +144,16 @@ func alert_others():
 	for zombie in get_tree().get_nodes_in_group("zombie"):
 		if global_position.distance_to(zombie.global_position) < alert_range && playerspotted:
 			zombie._on_health_healthtaken()
+
+
+func _on_navigation_velocity_computed(safe_velocity):
+	if state_machine.get_current_node() == "Swipe":
+		return
+	if deadcheck:
+		if nav_agent.avoidance_enabled:
+			nav_agent.avoidance_enabled = false
+			return
+		return
+	velocity = velocity.move_toward(safe_velocity, get_physics_process_delta_time()*10000)
+	move_and_slide()
+	pass

@@ -13,7 +13,7 @@ func fade_in():
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
-	print("Fading in.")
+	#print("Fading in.")
 	tween.tween_property(self, "modulate", Color(1,1,1,1), 0.2)
 	await tween.finished
 	await get_tree().create_timer(duration_seconds).timeout
@@ -23,7 +23,7 @@ func fade_out():
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
-	print("Fading out.")
+	#print("Fading out.")
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 0.2)
 	await tween.finished
 	on_fade_out_complete()

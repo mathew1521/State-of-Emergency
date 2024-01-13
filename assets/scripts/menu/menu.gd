@@ -107,22 +107,26 @@ func _on_realstart_pressed():
 			
 	match map:
 		"<Random Map>":
-			random_map()
+			random_map(modifier)
 		"Industry":
-			Main.loadScene("Industry")
-		"Plaza":
-			Main.loadScene("Plaza")
+			Main.loadScene("Industry", modifier)
+		"Gameplay Testing":
+			Main.loadScene("Plaza", modifier)
+		"Zombie Skins Testing":
+			Main.loadScene("ZombieLab", modifier)
 		_:
 			pass
 			
-func random_map():
+func random_map(modifier: String = ""):
 	var rng = randi_range(0,1)
 	
 	match rng:
 		0:
-			Main.loadScene("Industry")
+			Main.loadScene("Industry",  modifier)
 		1:
-			Main.loadScene("Plaza")
+			Main.loadScene("Plaza", modifier)
+		2:
+			Main.loadScene("ZombieLab", modifier)
 
 
 
@@ -182,6 +186,3 @@ func _on_resolutionmenu_pressed(index):
 			get_window().size = Vector2(1280,720)
 
 
-func _on_zombielab_pressed():
-	Main.loadScene("ZombieLab")
-	pass
