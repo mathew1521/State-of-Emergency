@@ -9,6 +9,7 @@ signal healthtaken
 
 func damage(damageval):
 	health -= damageval
+	self.get_parent().knockback()
 	emit_signal("healthtaken")
 	pass
 	

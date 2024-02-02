@@ -4,7 +4,7 @@ var player = null
 var attacking = false
 var isactive = true
 var playerspotted = false
-var SPEED = randf_range(0.75, 1.75)
+var SPEED = randf_range(1.75, 1.75)
 var FOV = 91.0
 const ATTACK_RANGE = 1.5
 const DET_RANGE = 30.0
@@ -39,8 +39,8 @@ func _process(_delta):
 #		return
 		
 	if !isactive: 
-		anim_tree.active = false
-		anim_player.stop()
+		#anim_tree.active = false
+		#anim_player.stop()
 		return
 	
 	if !playerspotted:
@@ -68,6 +68,10 @@ func _process(_delta):
 			nav_agent.set_velocity((next_nav_point - global_transform.origin).normalized() * SPEED)
 #			look_at(Vector3(global_position.x + velocity.x, global_position.y, player.global_position.z + velocity.z), Vector3.UP)
 			faceplayer(player.global_position, 0.2)
+#			if !nav_agent.avoidance_enabled:
+#				nav_agent.radius = 0.01
+#				nav_agent.avoidance_enabled = true
+#				nav_agent.radius = lerp(nav_agent.radius, 0.7, 0.05)
 			#look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		"Swipe":
 			if health.dead:
@@ -137,6 +141,14 @@ func _on_health_healthtaken():
 func pushback(dir):
 	var pushback_dir = -dir.normalized()
 	velocity += pushback_dir * 10
+	
+func knockback():
+	var knockback_dir = -global_position.direction_to(player.global_position)
+	print("balls")
+	isactive = false
+	velocity += knockback_dir * 10
+	await get_tree().create_timer(0.5).timeout
+	isactive = true
 
 
 func alert_others():
@@ -147,13 +159,18 @@ func alert_others():
 
 
 func _on_navigation_velocity_computed(safe_velocity):
+	
 	if state_machine.get_current_node() == "Swipe":
+		if nav_agent.avoidance_enabled:
+			pass
+			#nav_agent.avoidance_enabled = false
 		return
 	if deadcheck:
 		if nav_agent.avoidance_enabled:
 			nav_agent.avoidance_enabled = false
 			return
 		return
+		
 	velocity = velocity.move_toward(safe_velocity, get_physics_process_delta_time()*10000)
 	move_and_slide()
 	pass

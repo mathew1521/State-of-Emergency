@@ -1,9 +1,7 @@
-# This script adds camera shake. I found it somewhere, not sure where though, and I still use it.
-# It is less than ideal for things like gun recoil, etc. This will eventually be deprecated once I
+# This script adds camera shake. This will eventually be deprecated once I
 # get around to making a hand-made script.
 extends Node3D
 class_name CameraShake
-
 @export var trauma_reduction_rate = 1.0
 var trauma = 0.0
 
@@ -18,6 +16,15 @@ var time = 0.0
 
 @onready var initial_rotation = self.rotation_degrees as Vector3
 
+func _ready():
+	get_viewport().scaling_3d_scale = Main.defaultViewportRes
+	if Main.downscaling:
+		get_viewport().scaling_3d_scale = get_viewport().scaling_3d_scale * 0.375
+	if Main.posterization:
+		$"../../../hud/dither/rect".show()
+	elif !Main.posterization:
+		$"../../../hud/dither/rect".hide()
+	pass
 func _physics_process(delta):
 	time += delta
 	trauma = max(trauma - delta * trauma_reduction_rate, 0.0)

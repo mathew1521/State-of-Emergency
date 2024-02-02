@@ -7,6 +7,8 @@ extends Control
 @onready var fullscreenmenu = $settings/fullscreenmenu
 
 func _ready():
+	Main.posterization = false
+	Main.downscaling = false
 	Main.currentSTATE = Main.STATE.MENU
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	cursor.show()
@@ -186,3 +188,19 @@ func _on_resolutionmenu_pressed(index):
 			get_window().size = Vector2(1280,720)
 
 
+
+
+func _on_posterization_toggled(button_pressed):
+	if !Main.posterization:
+		Main.posterization = true
+	else:
+		Main.posterization = false
+	pass # Replace with function body.
+
+
+func _on_downscale_toggled(button_pressed):
+	if !Main.downscaling:
+		Main.downscaling = true
+	else:
+		Main.downscaling = false
+	pass # Replace with function body.

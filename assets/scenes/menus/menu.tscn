@@ -350,6 +350,36 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Back"
 
+[node name="posterization" type="CheckButton" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -42.0
+offset_right = 32.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Colour Posterization"
+
+[node name="downscale" type="CheckButton" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = 12.0
+offset_right = 32.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lower Internal Res."
+
 [node name="logo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -376,3 +406,5 @@ texture = ExtResource("7_j18y7")
 [connection signal="pressed" from="settings/fullscreenmenu" to="." method="_on_menus_pressed"]
 [connection signal="pressed" from="settings/resolutionmenu" to="." method="_on_menus_pressed"]
 [connection signal="pressed" from="settings/back" to="." method="_on_settings_back_pressed"]
+[connection signal="toggled" from="settings/posterization" to="." method="_on_posterization_toggled"]
+[connection signal="toggled" from="settings/downscale" to="." method="_on_downscale_toggled"]

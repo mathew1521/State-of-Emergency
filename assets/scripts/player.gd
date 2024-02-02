@@ -127,6 +127,8 @@ func _input(event):
 		mouse_input = event.relative
 		
 func _process(_delta):
+	if health <= 0:
+		Main.loadScene(Main.currentSCENE)
 	if Main.currentSTATE == Main.STATE.PLAYING:
 		interactHOVER()
 		cursor.position = get_viewport().size / 2.0

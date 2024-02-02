@@ -3,6 +3,7 @@
 extends Node
 class_name Console
 var isopen: bool = false
+var enabled: bool = false
 @onready var output = $panel/output
 @onready var input = $panel/input
 var itemArrayNames = []
@@ -57,6 +58,8 @@ func _process(_delta):
 	
 func _input(_event):
 	if Input.is_action_just_pressed("console"):
+		if !enabled:
+			return
 		if Main.currentSTATE == Main.STATE.CONSOLE:
 			Main.currentSTATE = Main.STATE.PLAYING
 			self.visible = false

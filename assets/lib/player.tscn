@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c31s2badjsnua"]
+[gd_scene load_steps=31 format=3 uid="uid://c31s2badjsnua"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_dqjj7"]
 [ext_resource type="Script" path="res://assets/scripts/camshake.gd" id="2_c58xp"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cxs3r63cfoj6w" path="res://assets/textures/cursor.png" id="11_sfn26"]
 [ext_resource type="Script" path="res://assets/scripts/recoil.gd" id="11_t0jsw"]
 [ext_resource type="Shader" path="res://assets/shaders/negativecursor.gdshader" id="11_ydyub"]
+[ext_resource type="Shader" path="res://assets/shaders/dither.gdshader" id="12_2hu6p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ui8lw"]
 
@@ -32,6 +33,12 @@ height = 1.4
 min_value = -1.0
 _data = [Vector2(0.0215054, 0.768421), 0.0, 0.0, 0, 0, Vector2(0.215054, -0.11579), 0.0, 0.0, 0, 0, Vector2(0.344086, 0.389474), 0.0, 0.0, 0, 0, Vector2(0.478495, 0.157895), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ks3u"]
+shader = ExtResource("12_2hu6p")
+shader_parameter/SCREEN_WIDTH = 320.0
+shader_parameter/COLOR_FACTOR = 6.25
+shader_parameter/DITHERING_STRENTH = 0.05
 
 [sub_resource type="Resource" id="Resource_f4uqc"]
 script = ExtResource("5_7pwcv")
@@ -124,6 +131,17 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="dither" type="CanvasLayer" parent="hud"]
+
+[node name="rect" type="ColorRect" parent="hud/dither"]
+visible = false
+material = SubResource("ShaderMaterial_1ks3u")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="inventorylayer" type="CanvasLayer" parent="hud"]
 

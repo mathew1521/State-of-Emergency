@@ -10,7 +10,9 @@ var currentSCENE: String = "Menu"
 var gameModifier: String = ""
 var currentInventory: Array[AddItemData] = []
 var currentSlot: int = 0
-
+var defaultViewportRes
+var posterization: bool = false
+var downscaling: bool = false
 var sceneMap = {
 	"Industry": "res://assets/maps/industry/industry.tscn",
 	"Industry_Apartment": "res://assets/maps/industry/industry_apartment.tscn",
@@ -19,6 +21,9 @@ var sceneMap = {
 	"ZombieLab": "res://sub_viewport.tscn"
 }
 
+func _ready():
+	defaultViewportRes = get_viewport().scaling_3d_scale
+	
 func loadScene(scene: String, modifier: String = ""):
 	for sceneName in sceneMap.keys():
 		if sceneName == scene:
