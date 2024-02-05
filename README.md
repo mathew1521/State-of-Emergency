@@ -6,5 +6,5 @@
 * "proper" zombies, romero styled
 * low poly retro artstyle, but with nicer lighting and not dragged down by technological limits
 * (eventually) native modding tools
-* 
+
 ![image](https://github.com/mathew1521/State-of-Emergency/assets/128736690/b5cc9c8e-6491-4fd3-b0cb-9807b146c417)
